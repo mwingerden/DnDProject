@@ -13,6 +13,7 @@ public abstract class Character implements SavingThrows, SkillCheck{
     int charIntelligence;
     int charWisdom;
     int charCharisma;
+    Dice dice;
 
     public Character(String charName, String charClass, String charRace, String charAlignment, int charArmorClass,
                  int charHitPoints, int charSpeed, int charStrength, int charDexterity, int charConstitution,
@@ -31,6 +32,7 @@ public abstract class Character implements SavingThrows, SkillCheck{
         this.charIntelligence = charIntelligence;
         this.charWisdom = charWisdom;
         this.charCharisma = charCharisma;
+        this.dice = new Dice();
     }
 
     int StrengthBonus(){
@@ -57,121 +59,121 @@ public abstract class Character implements SavingThrows, SkillCheck{
         return (charCharisma - 10) / 2;
     }@Override
     public int SavingThrowStrength() {
-        return StrengthBonus();
+        return StrengthBonus() + dice.dTwenty();
     }
 
     @Override
     public int SavingThrowDexterity() {
-        return DexterityBonus();
+        return DexterityBonus() + dice.dTwenty();
     }
 
     @Override
     public int SavingThrowConstitution() {
-        return ConstitutionBonus();
+        return ConstitutionBonus() + dice.dTwenty();
     }
 
     @Override
     public int SavingThrowIntelligence() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SavingThrowWisdom() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 
     @Override
     public int SavingThrowCharisma() {
-        return CharismaBonus();
+        return CharismaBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckAcrobatics() {
-        return DexterityBonus();
+        return DexterityBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckAnimalHandling() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckArcana() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckAthletics() {
-        return StrengthBonus();
+        return StrengthBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckDeception() {
-        return CharismaBonus();
+        return CharismaBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckHistory() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckInsight() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckIntimidation() {
-        return CharismaBonus();
+        return CharismaBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckInvestigation() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckMedicine() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckNature() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckPerception() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckPerformance() {
-        return CharismaBonus();
+        return CharismaBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckPersuasion() {
-        return CharismaBonus();
+        return CharismaBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckReligion() {
-        return IntelligenceBonus();
+        return IntelligenceBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckSleightOfHand() {
-        return DexterityBonus();
+        return DexterityBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckStealth() {
-        return DexterityBonus();
+        return DexterityBonus() + dice.dTwenty();
     }
 
     @Override
     public int SkillCheckSurvival() {
-        return WisdomBonus();
+        return WisdomBonus() + dice.dTwenty();
     }
 }
