@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added Dice class and added d20 rolls to checks and skills">
-      <change afterPath="$PROJECT_DIR$/src/DiceTest.java" afterDir="false" />
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added test cases for Dice.">
+      <change afterPath="$PROJECT_DIR$/src/CharacterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +55,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DiceTest">
+  <component name="RunManager" selected="JUnit.CharacterTest">
     <configuration name="DnDInitiativeTracker" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DnDInitiativeTracker" />
       <module name="DnDProject" />
@@ -61,20 +63,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CharacterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DnDProject" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DiceTest" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiceTest.dTwenty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CharacterTest.intelligenceBonus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DnDProject" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DiceTest" />
-      <option name="METHOD_NAME" value="dTwenty" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
+      <option name="METHOD_NAME" value="intelligenceBonus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterTest.savingThrowCharisma" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
+      <option name="METHOD_NAME" value="savingThrowCharisma" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterTest.savingThrowStrength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
+      <option name="METHOD_NAME" value="savingThrowStrength" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterTest.skillCheckAcrobatics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
+      <option name="METHOD_NAME" value="skillCheckAcrobatics" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,13 +114,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.DnDInitiativeTracker" />
-      <item itemvalue="JUnit.DiceTest" />
-      <item itemvalue="JUnit.DiceTest.dTwenty" />
+      <item itemvalue="JUnit.CharacterTest" />
+      <item itemvalue="JUnit.CharacterTest.intelligenceBonus" />
+      <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
+      <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
+      <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiceTest" />
-        <item itemvalue="JUnit.DiceTest.dTwenty" />
+        <item itemvalue="JUnit.CharacterTest" />
+        <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
+        <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
+        <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
+        <item itemvalue="JUnit.CharacterTest.intelligenceBonus" />
       </list>
     </recent_temporary>
   </component>
@@ -129,13 +167,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670877497573</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added test cases for Dice.">
+      <created>1670878118127</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670878118127</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit." />
     <MESSAGE value="Added Abstract Character class for Enemy and Ally." />
     <MESSAGE value="Added Dice class and added d20 rolls to checks and skills" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Dice class and added d20 rolls to checks and skills" />
+    <MESSAGE value="Added test cases for Dice." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test cases for Dice." />
   </component>
 </project>

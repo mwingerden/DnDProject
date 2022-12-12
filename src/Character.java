@@ -36,28 +36,73 @@ public abstract class Character implements SavingThrows, SkillCheck{
     }
 
     int StrengthBonus(){
-        return (charStrength - 10) / 2;
+        float value = (float)(charStrength - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charStrength - 10) / 2) - 1;
+        }
+        else {
+            return (charStrength - 10) / 2;
+        }
     }
 
     int DexterityBonus(){
-        return (charDexterity - 10) / 2;
+        float value = (float)(charDexterity - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charDexterity - 10) / 2) - 1;
+        }
+        else {
+            return (charDexterity - 10) / 2;
+        }
     }
 
     int ConstitutionBonus(){
-        return (charConstitution - 10) / 2;
+
+        float value = (float)(charConstitution - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charConstitution - 10) / 2) - 1;
+        }
+        else {
+            return (charConstitution - 10) / 2;
+        }
     }
 
     int IntelligenceBonus(){
-        return (charIntelligence - 10) / 2;
+        float value = (float)(charIntelligence - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charIntelligence - 10) / 2) - 1;
+        }
+        else {
+            return (charIntelligence - 10) / 2;
+        }
     }
 
     int WisdomBonus(){
-        return (charWisdom - 10) / 2;
+        float value = (float)(charWisdom - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charWisdom - 10) / 2) - 1;
+        }
+        else {
+            return (charWisdom - 10) / 2;
+        }
     }
 
     int CharismaBonus(){
-        return (charCharisma - 10) / 2;
-    }@Override
+        float value = (float)(charCharisma - 10) / 2;
+        if(value <= -0.1)
+        {
+            return ((charCharisma - 10) / 2) - 1;
+        }
+        else {
+            return (charCharisma - 10) / 2;
+        }
+    }
+
+    @Override
     public int SavingThrowStrength() {
         return StrengthBonus() + dice.dTwenty();
     }
