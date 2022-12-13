@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added test cases for Dice.">
-      <change afterPath="$PROJECT_DIR$/src/CharacterTest.java" afterDir="false" />
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Formatted Code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +38,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
+    "Repository.Attach.Annotations": "true",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true"
+    "create.test.in.the.same.root": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -55,7 +59,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CharacterTest">
+  <component name="RunManager" selected="JUnit.DiceTest">
     <configuration name="DnDInitiativeTracker" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DnDInitiativeTracker" />
       <module name="DnDProject" />
@@ -68,16 +72,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CharacterTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterTest.intelligenceBonus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" value="intelligenceBonus" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,21 +106,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.DnDInitiativeTracker" />
+      <item itemvalue="JUnit.DiceTest" />
       <item itemvalue="JUnit.CharacterTest" />
-      <item itemvalue="JUnit.CharacterTest.intelligenceBonus" />
       <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
       <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
       <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest" />
         <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
         <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
         <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
-        <item itemvalue="JUnit.CharacterTest.intelligenceBonus" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +177,35 @@
       <option name="project" value="LOCAL" />
       <updated>1670878118127</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added test cases for Character.">
+      <created>1670880297660</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670880297660</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added README.txt">
+      <created>1670966582006</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670966582006</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Formatted Code.">
+      <created>1670967908402</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670967908402</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Formatted Code.">
+      <created>1670968504477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670968504477</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -182,6 +213,9 @@
     <MESSAGE value="Added Abstract Character class for Enemy and Ally." />
     <MESSAGE value="Added Dice class and added d20 rolls to checks and skills" />
     <MESSAGE value="Added test cases for Dice." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test cases for Dice." />
+    <MESSAGE value="Added test cases for Character." />
+    <MESSAGE value="Added README.txt" />
+    <MESSAGE value="Formatted Code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatted Code." />
   </component>
 </project>
