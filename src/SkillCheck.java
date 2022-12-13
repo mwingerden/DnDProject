@@ -1,37 +1,37 @@
 public interface SkillCheck {
-    int SkillCheckAcrobatics();
+    int skillCheckAcrobatics();
 
-    int SkillCheckAnimalHandling();
+    int skillCheckAnimalHandling();
 
-    int SkillCheckArcana();
+    int skillCheckArcana();
 
-    int SkillCheckAthletics();
+    int skillCheckAthletics();
 
-    int SkillCheckDeception();
+    int skillCheckDeception();
 
-    int SkillCheckHistory();
+    int skillCheckHistory();
 
-    int SkillCheckInsight();
+    int skillCheckInsight();
 
-    int SkillCheckIntimidation();
+    int skillCheckIntimidation();
 
-    int SkillCheckInvestigation();
+    int skillCheckInvestigation();
 
-    int SkillCheckMedicine();
+    int skillCheckMedicine();
 
-    int SkillCheckNature();
+    int skillCheckNature();
 
-    int SkillCheckPerception();
+    int skillCheckPerception();
 
-    int SkillCheckPerformance();
+    int skillCheckPerformance();
 
-    int SkillCheckPersuasion();
+    int skillCheckPersuasion();
 
-    int SkillCheckReligion();
+    int skillCheckReligion();
 
-    int SkillCheckSleightOfHand();
+    int skillCheckSleightOfHand();
 
-    int SkillCheckStealth();
+    int skillCheckStealth();
 
-    int SkillCheckSurvival();
+    int skillCheckSurvival();
 }

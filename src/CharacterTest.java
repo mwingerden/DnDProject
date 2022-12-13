@@ -10,181 +10,181 @@ class CharacterTest {
 
     @Test
     void strengthBonus() {
-        int value = npc.StrengthBonus();
+        int value = npc.bonusStrength();
         assertEquals(2, value);
     }
 
     @Test
     void dexterityBonus() {
-        int value = npc.DexterityBonus();
+        int value = npc.bonusDexterity();
         assertEquals(1, value);
     }
 
     @Test
     void constitutionBonus() {
-        int value = npc.ConstitutionBonus();
+        int value = npc.bonusConstitution();
         assertEquals(1, value);
     }
 
     @Test
     void intelligenceBonus() {
-        int value = npc.IntelligenceBonus();
+        int value = npc.bonusIntelligence();
         assertEquals(2, value);
     }
 
     @Test
     void wisdomBonus() {
-        int value = npc.WisdomBonus();
+        int value = npc.bonusWisdom();
         assertEquals(-1, value);
     }
 
     @Test
     void charismaBonus() {
-        int value = npc.CharismaBonus();
+        int value = npc.bonusCharisma();
         assertEquals(0, value);
     }
 
     @Test
     void savingThrowStrength() {
-        int value = npc.SavingThrowStrength();
-        assertTrue(value >= 1 + npc.StrengthBonus() && value <= 20 + npc.StrengthBonus());
+        int value = npc.savingThrowStrength();
+        assertTrue(value >= 1 + npc.bonusStrength() && value <= 20 + npc.bonusStrength());
     }
 
     @Test
     void savingThrowDexterity() {
-        int value = npc.SavingThrowDexterity();
-        assertTrue(value >= 1 + npc.DexterityBonus() && value <= 20 + npc.DexterityBonus());
+        int value = npc.savingThrowDexterity();
+        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
     }
 
     @Test
     void savingThrowConstitution() {
-        int value = npc.SavingThrowConstitution();
-        assertTrue(value >= 1 + npc.ConstitutionBonus() && value <= 20 + npc.ConstitutionBonus());
+        int value = npc.savingThrowConstitution();
+        assertTrue(value >= 1 + npc.bonusConstitution() && value <= 20 + npc.bonusConstitution());
     }
 
     @Test
     void savingThrowIntelligence() {
-        int value = npc.SavingThrowIntelligence();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.savingThrowIntelligence();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void savingThrowWisdom() {
-        int value = npc.SavingThrowWisdom();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.savingThrowWisdom();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 
     @Test
     void savingThrowCharisma() {
-        int value = npc.SavingThrowCharisma();
-        assertTrue(value >= 1 + npc.CharismaBonus() && value <= 20 + npc.CharismaBonus());
+        int value = npc.savingThrowCharisma();
+        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
     }
 
     @Test
     void skillCheckAcrobatics() {
-        int value = npc.SkillCheckAcrobatics();
-        assertTrue(value >= 1 + npc.DexterityBonus() && value <= 20 + npc.DexterityBonus());
+        int value = npc.skillCheckAcrobatics();
+        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
     }
 
     @Test
     void skillCheckAnimalHandling() {
-        int value = npc.SkillCheckAnimalHandling();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.skillCheckAnimalHandling();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 
     @Test
     void skillCheckArcana() {
-        int value = npc.SkillCheckArcana();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.skillCheckArcana();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void skillCheckAthletics() {
-        int value = npc.SkillCheckAthletics();
-        assertTrue(value >= 1 + npc.StrengthBonus() && value <= 20 + npc.StrengthBonus());
+        int value = npc.skillCheckAthletics();
+        assertTrue(value >= 1 + npc.bonusStrength() && value <= 20 + npc.bonusStrength());
     }
 
     @Test
     void skillCheckDeception() {
-        int value = npc.SkillCheckDeception();
-        assertTrue(value >= 1 + npc.CharismaBonus() && value <= 20 + npc.CharismaBonus());
+        int value = npc.skillCheckDeception();
+        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
     }
 
     @Test
     void skillCheckHistory() {
-        int value = npc.SkillCheckHistory();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.skillCheckHistory();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void skillCheckInsight() {
-        int value = npc.SkillCheckInsight();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.skillCheckInsight();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 
     @Test
     void skillCheckIntimidation() {
-        int value = npc.SkillCheckIntimidation();
-        assertTrue(value >= 1 + npc.CharismaBonus() && value <= 20 + npc.CharismaBonus());
+        int value = npc.skillCheckIntimidation();
+        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
     }
 
     @Test
     void skillCheckInvestigation() {
-        int value = npc.SkillCheckInvestigation();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.skillCheckInvestigation();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void skillCheckMedicine() {
-        int value = npc.SkillCheckMedicine();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.skillCheckMedicine();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 
     @Test
     void skillCheckNature() {
-        int value = npc.SkillCheckNature();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.skillCheckNature();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void skillCheckPerception() {
-        int value = npc.SkillCheckPerception();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.skillCheckPerception();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 
     @Test
     void skillCheckPerformance() {
-        int value = npc.SkillCheckPerformance();
-        assertTrue(value >= 1 + npc.CharismaBonus() && value <= 20 + npc.CharismaBonus());
+        int value = npc.skillCheckPerformance();
+        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
     }
 
     @Test
     void skillCheckPersuasion() {
-        int value = npc.SkillCheckPersuasion();
-        assertTrue(value >= 1 + npc.CharismaBonus() && value <= 20 + npc.CharismaBonus());
+        int value = npc.skillCheckPersuasion();
+        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
     }
 
     @Test
     void skillCheckReligion() {
-        int value = npc.SkillCheckReligion();
-        assertTrue(value >= 1 + npc.IntelligenceBonus() && value <= 20 + npc.IntelligenceBonus());
+        int value = npc.skillCheckReligion();
+        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
     }
 
     @Test
     void skillCheckSleightOfHand() {
-        int value = npc.SkillCheckSleightOfHand();
-        assertTrue(value >= 1 + npc.DexterityBonus() && value <= 20 + npc.DexterityBonus());
+        int value = npc.skillCheckSleightOfHand();
+        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
     }
 
     @Test
     void skillCheckStealth() {
-        int value = npc.SkillCheckStealth();
-        assertTrue(value >= 1 + npc.DexterityBonus() && value <= 20 + npc.DexterityBonus());
+        int value = npc.skillCheckStealth();
+        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
     }
 
     @Test
     void skillCheckSurvival() {
-        int value = npc.SkillCheckSurvival();
-        assertTrue(value >= 1 + npc.WisdomBonus() && value <= 20 + npc.WisdomBonus());
+        int value = npc.skillCheckSurvival();
+        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
     }
 }

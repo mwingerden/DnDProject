@@ -1,13 +1,13 @@
 public interface SavingThrows {
-    int SavingThrowStrength();
+    int savingThrowStrength();
 
-    int SavingThrowDexterity();
+    int savingThrowDexterity();
 
-    int SavingThrowConstitution();
+    int savingThrowConstitution();
 
-    int SavingThrowIntelligence();
+    int savingThrowIntelligence();
 
-    int SavingThrowWisdom();
+    int savingThrowWisdom();
 
-    int SavingThrowCharisma();
+    int savingThrowCharisma();
 }
