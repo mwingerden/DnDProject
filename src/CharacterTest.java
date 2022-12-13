@@ -1,11 +1,12 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CharacterTest {
     Character npc = new Enemy("Matt Wingo", "civilian", "Human",
             "neutral", 10, 10, 30, 15, 12,
-            13,14,9,10);
+            13, 14, 9, 10);
 
     @Test
     void strengthBonus() {

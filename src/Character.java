@@ -1,4 +1,4 @@
-public abstract class Character implements SavingThrows, SkillCheck{
+public abstract class Character implements SavingThrows, SkillCheck {
     String charName;
     String charClass;
     String charRace;
@@ -16,8 +16,8 @@ public abstract class Character implements SavingThrows, SkillCheck{
     Dice dice;
 
     public Character(String charName, String charClass, String charRace, String charAlignment, int charArmorClass,
-                 int charHitPoints, int charSpeed, int charStrength, int charDexterity, int charConstitution,
-                 int charIntelligence, int charWisdom, int charCharisma) {
+                     int charHitPoints, int charSpeed, int charStrength, int charDexterity, int charConstitution,
+                     int charIntelligence, int charWisdom, int charCharisma) {
         this.charName = charName;
         this.charClass = charClass;
         this.charRace = charRace;
@@ -35,69 +35,57 @@ public abstract class Character implements SavingThrows, SkillCheck{
         this.dice = new Dice();
     }
 
-    int StrengthBonus(){
-        float value = (float)(charStrength - 10) / 2;
-        if(value <= -0.1)
-        {
+    int StrengthBonus() {
+        float value = (float) (charStrength - 10) / 2;
+        if (value <= -0.1) {
             return ((charStrength - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charStrength - 10) / 2;
         }
     }
 
-    int DexterityBonus(){
-        float value = (float)(charDexterity - 10) / 2;
-        if(value <= -0.1)
-        {
+    int DexterityBonus() {
+        float value = (float) (charDexterity - 10) / 2;
+        if (value <= -0.1) {
             return ((charDexterity - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charDexterity - 10) / 2;
         }
     }
 
-    int ConstitutionBonus(){
+    int ConstitutionBonus() {
 
-        float value = (float)(charConstitution - 10) / 2;
-        if(value <= -0.1)
-        {
+        float value = (float) (charConstitution - 10) / 2;
+        if (value <= -0.1) {
             return ((charConstitution - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charConstitution - 10) / 2;
         }
     }
 
-    int IntelligenceBonus(){
-        float value = (float)(charIntelligence - 10) / 2;
-        if(value <= -0.1)
-        {
+    int IntelligenceBonus() {
+        float value = (float) (charIntelligence - 10) / 2;
+        if (value <= -0.1) {
             return ((charIntelligence - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charIntelligence - 10) / 2;
         }
     }
 
-    int WisdomBonus(){
-        float value = (float)(charWisdom - 10) / 2;
-        if(value <= -0.1)
-        {
+    int WisdomBonus() {
+        float value = (float) (charWisdom - 10) / 2;
+        if (value <= -0.1) {
             return ((charWisdom - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charWisdom - 10) / 2;
         }
     }
 
-    int CharismaBonus(){
-        float value = (float)(charCharisma - 10) / 2;
-        if(value <= -0.1)
-        {
+    int CharismaBonus() {
+        float value = (float) (charCharisma - 10) / 2;
+        if (value <= -0.1) {
             return ((charCharisma - 10) / 2) - 1;
-        }
-        else {
+        } else {
             return (charCharisma - 10) / 2;
         }
     }

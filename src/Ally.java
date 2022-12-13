@@ -1,4 +1,4 @@
-public class Ally extends Character{
+public class Ally extends Character {
     int charLevel;
     String charBackground;
 

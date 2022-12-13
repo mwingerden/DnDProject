@@ -1,7 +1,8 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DiceTest {
     Dice dice = new Dice();
+
     @org.junit.jupiter.api.Test
     void dTwenty() {
         int value = dice.dTwenty();
