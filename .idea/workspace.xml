@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Formatted Code.">
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added json files and a working json reader that uses Jackson.">
+      <change afterPath="$PROJECT_DIR$/enemies/adult_black_dragon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enemies/sea_hag.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DamageTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LegendaryAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SThrows.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/adult black dragon.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/sea hag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,6 +46,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "true",
     "Repository.Attach.JavaDocs": "true",
@@ -46,20 +56,28 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "C:/Users/matth/IdeaProjects/DnDProject/src",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\DnDProject\src" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\DnDProject" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DiceTest">
+  <component name="RunManager" selected="Application.DnDInitiativeTracker">
     <configuration name="DnDInitiativeTracker" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DnDInitiativeTracker" />
       <module name="DnDProject" />
@@ -125,8 +143,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest" />
+        <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
         <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
         <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
@@ -205,10 +223,25 @@
       <option name="project" value="LOCAL" />
       <updated>1670968504477</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added json library.">
+      <created>1670973216415</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670973216415</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added json files and a working json reader that uses Jackson.">
+      <created>1671133403894</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671133403894</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit." />
     <MESSAGE value="Added Abstract Character class for Enemy and Ally." />
     <MESSAGE value="Added Dice class and added d20 rolls to checks and skills" />
@@ -216,6 +249,8 @@
     <MESSAGE value="Added test cases for Character." />
     <MESSAGE value="Added README.txt" />
     <MESSAGE value="Formatted Code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Formatted Code." />
+    <MESSAGE value="Added json library." />
+    <MESSAGE value="Added json files and a working json reader that uses Jackson." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added json files and a working json reader that uses Jackson." />
   </component>
 </project>

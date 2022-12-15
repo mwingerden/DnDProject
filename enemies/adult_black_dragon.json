@@ -121,8 +121,7 @@
   "skills": [
     {
       "name": "perception",
-      "stat": "wis",
-      "note": " (ex)"
+      "stat": "wis"
     },
     {
       "name": "stealth",
