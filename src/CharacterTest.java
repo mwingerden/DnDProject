@@ -1,12 +1,20 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CharacterTest {
-    Character npc = new Enemy("Matt Wingo", "civilian", "Human",
-            "neutral", 10, 10, 30, 15, 12,
-            13, 14, 9, 10);
+    Character npc;
+    @BeforeEach
+    public void setUp() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        npc = mapper.readValue(new File("./enemies/thug.json"),Enemy.class);
+    }
 
     @Test
     void strengthBonus() {
@@ -17,25 +25,25 @@ class CharacterTest {
     @Test
     void dexterityBonus() {
         int value = npc.bonusDexterity();
-        assertEquals(1, value);
+        assertEquals(0, value);
     }
 
     @Test
     void constitutionBonus() {
         int value = npc.bonusConstitution();
-        assertEquals(1, value);
+        assertEquals(2, value);
     }
 
     @Test
     void intelligenceBonus() {
         int value = npc.bonusIntelligence();
-        assertEquals(2, value);
+        assertEquals(0, value);
     }
 
     @Test
     void wisdomBonus() {
         int value = npc.bonusWisdom();
-        assertEquals(-1, value);
+        assertEquals(0, value);
     }
 
     @Test

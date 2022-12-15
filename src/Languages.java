@@ -1,21 +1,21 @@
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Actions {
+public class Languages {
     private final String name;
-    private final String desc;
+    private final boolean speaks;
 
     @JsonCreator
-    private Actions(@JsonProperty("name") String name, @JsonProperty("desc") String desc) {
+    private Languages(@JsonProperty("name") String name, @JsonProperty("speaks") boolean speaks) {
         this.name = name;
-        this.desc = desc;
+        this.speaks = speaks;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDesc() {
-        return desc;
+    public boolean isSpeaks() {
+        return speaks;
     }
 }

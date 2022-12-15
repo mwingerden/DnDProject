@@ -209,4 +209,60 @@ public abstract class Character implements SavingThrows, SkillCheck {
     public int skillCheckSurvival() {
         return bonusWisdom() + dice.dTwenty();
     }
+
+    public String getCharName() {
+        return charName;
+    }
+
+    public String getCharClass() {
+        return charClass;
+    }
+
+    public String getCharRace() {
+        return charRace;
+    }
+
+    public String getCharAlignment() {
+        return charAlignment;
+    }
+
+    public int getCharArmorClass() {
+        return charArmorClass;
+    }
+
+    public int getCharHitPoints() {
+        return charHitPoints;
+    }
+
+    public int getCharTempHitPoints() {
+        return charTempHitPoints;
+    }
+
+    public int getCharSpeed() {
+        return charSpeed;
+    }
+
+    public int getCharStrength() {
+        return charStrength;
+    }
+
+    public int getCharDexterity() {
+        return charDexterity;
+    }
+
+    public int getCharConstitution() {
+        return charConstitution;
+    }
+
+    public int getCharIntelligence() {
+        return charIntelligence;
+    }
+
+    public int getCharWisdom() {
+        return charWisdom;
+    }
+
+    public int getCharCharisma() {
+        return charCharisma;
+    }
 }

@@ -34,5 +34,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="fasterxml.jackson.dataformat.cbor" level="project" />
   </component>
 </module>
