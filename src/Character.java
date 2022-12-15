@@ -1,92 +1,224 @@
 public abstract class Character implements SavingThrows, SkillCheck {
-    String charName;
-    String charClass;
-    String charRace;
-    String charAlignment;
-    int charArmorClass;
-    int charHitPoints;
-    int charTempHitPoints;
-    int charSpeed;
-    int charStrength;
-    int charDexterity;
-    int charConstitution;
-    int charIntelligence;
-    int charWisdom;
-    int charCharisma;
+    String name;
+    String size;
+    String type;
+    String tag;
+    String alignment;
+    int hitDice;
+    String armorName;
+    int shieldBonus;
+    int natArmorBonus;
+    String otherArmorDesc;
+    int speed;
+    int burrowSpeed;
+    int climbSpeed;
+    int flySpeed;
+    boolean hover;
+    int swimSpeed;
+    boolean customHP;
+    boolean customSpeed;
+    String hpText;
+    String speedDesc;
+    int strPoints;
+    int dexPoints;
+    int conPoints;
+    int intPoints;
+    int wisPoints;
+    int chaPoints;
+    int blindsight;
+    boolean blind;
+    int darkvision;
+    int tremorsense;
+    int truesight;
+    int telepathy;
+    String cr;
+    String customCr;
+    int customProf;
+    boolean isLegendary;
+    String legendariesDescription;
+    boolean isLair;
+    String lairDescription;
+    String lairDescriptionEnd;
+    boolean isMythic;
+    String mythicDescription;
+    boolean isRegional;
+    String regionalDescription;
+    String regionalDescriptionEnd;
+    String[] properties;
+    Abilities[] abilities;
+    Actions[] actions;
+    String[] bonusActions;
+    String[] reactions;
+    LegendaryAction[] legendaries;
+    String[] mythics;
+    String[] lairs;
+    String[] regionals;
+    SThrows[] sthrows;
+    Skills[] skills;
+    DamageTypes[] damagetypes;
+    String[] specialdamage;
+    String[] conditions;
+    Languages[] languages;
+    String understandsBut;
+    String shortName;
+    String pluralName;
+    boolean doubleColumns;
+    int separationPoint;
+    String[] damage;
     Dice dice;
 
-    public Character(String charName, String charClass, String charRace, String charAlignment, int charArmorClass,
-                     int charHitPoints, int charSpeed, int charStrength, int charDexterity, int charConstitution,
-                     int charIntelligence, int charWisdom, int charCharisma) {
-        this.charName = charName;
-        this.charClass = charClass;
-        this.charRace = charRace;
-        this.charAlignment = charAlignment;
-        this.charArmorClass = charArmorClass;
-        this.charHitPoints = charHitPoints;
-        this.charTempHitPoints = 0;
-        this.charSpeed = charSpeed;
-        this.charStrength = charStrength;
-        this.charDexterity = charDexterity;
-        this.charConstitution = charConstitution;
-        this.charIntelligence = charIntelligence;
-        this.charWisdom = charWisdom;
-        this.charCharisma = charCharisma;
+    public Character(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
+                     int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
+                     int climbSpeed, int flySpeed, boolean hover, int swimSpeed, boolean customHP, boolean customSpeed,
+                     String hpText, String speedDesc, int strPoints, int dexPoints, int conPoints, int intPoints,
+                     int wisPoints, int chaPoints, int blindsight, boolean blind, int darkvision, int tremorsense,
+                     int truesight, int telepathy, String cr, String customCr, int customProf, boolean isLegendary,
+                     String legendariesDescription, boolean isLair, String lairDescription, String lairDescriptionEnd,
+                     boolean isMythic, String mythicDescription, boolean isRegional, String regionalDescription,
+                     String regionalDescriptionEnd, String[] properties, Abilities[] abilities, Actions[] actions,
+                     String[] bonusActions, String[] reactions, LegendaryAction[] legendaries, String[] mythics,
+                     String[] lairs, String[] regionals, SThrows[] sthrows, Skills[] skills, DamageTypes[] damagetypes,
+                     String[] specialdamage, String[] conditions, Languages[] languages, String understandsBut,
+                     String shortName, String pluralName, boolean doubleColumns, int separationPoint, String[] damage) {
+        this.name = name;
+        this.size = size;
+        this.type = type;
+        this.tag = tag;
+        this.alignment = alignment;
+        this.hitDice = hitDice;
+        this.armorName = armorName;
+        this.shieldBonus = shieldBonus;
+        this.natArmorBonus = natArmorBonus;
+        this.otherArmorDesc = otherArmorDesc;
+        this.speed = speed;
+        this.burrowSpeed = burrowSpeed;
+        this.climbSpeed = climbSpeed;
+        this.flySpeed = flySpeed;
+        this.hover = hover;
+        this.swimSpeed = swimSpeed;
+        this.customHP = customHP;
+        this.customSpeed = customSpeed;
+        this.hpText = hpText;
+        this.speedDesc = speedDesc;
+        this.strPoints = strPoints;
+        this.dexPoints = dexPoints;
+        this.conPoints = conPoints;
+        this.intPoints = intPoints;
+        this.wisPoints = wisPoints;
+        this.chaPoints = chaPoints;
+        this.blindsight = blindsight;
+        this.blind = blind;
+        this.darkvision = darkvision;
+        this.tremorsense = tremorsense;
+        this.truesight = truesight;
+        this.telepathy = telepathy;
+        this.cr = cr;
+        this.customCr = customCr;
+        this.customProf = customProf;
+        this.isLegendary = isLegendary;
+        this.legendariesDescription = legendariesDescription;
+        this.isLair = isLair;
+        this.lairDescription = lairDescription;
+        this.lairDescriptionEnd = lairDescriptionEnd;
+        this.isMythic = isMythic;
+        this.mythicDescription = mythicDescription;
+        this.isRegional = isRegional;
+        this.regionalDescription = regionalDescription;
+        this.regionalDescriptionEnd = regionalDescriptionEnd;
+        this.properties = properties;
+        this.abilities = abilities;
+        this.actions = actions;
+        this.bonusActions = bonusActions;
+        this.reactions = reactions;
+        this.legendaries = legendaries;
+        this.mythics = mythics;
+        this.lairs = lairs;
+        this.regionals = regionals;
+        this.sthrows = sthrows;
+        this.skills = skills;
+        this.damagetypes = damagetypes;
+        this.specialdamage = specialdamage;
+        this.conditions = conditions;
+        this.languages = languages;
+        this.understandsBut = understandsBut;
+        this.shortName = shortName;
+        this.pluralName = pluralName;
+        this.doubleColumns = doubleColumns;
+        this.separationPoint = separationPoint;
+        this.damage = damage;
         this.dice = new Dice();
     }
 
+    int calHitPoints() {
+        double hpSize = 0;
+        if(size.compareToIgnoreCase("tiny") == 0) {
+            hpSize = 2.5;
+        } else if (size.compareToIgnoreCase("small") == 0) {
+            hpSize = 3.5;
+        }else if (size.compareToIgnoreCase("medium") == 0) {
+            hpSize = 4.5;
+        }else if (size.compareToIgnoreCase("large") == 0) {
+            hpSize = 5.5;
+        }else if (size.compareToIgnoreCase("huge") == 0) {
+            hpSize = 6.5;
+        }else if (size.compareToIgnoreCase("gargantuan") == 0) {
+            hpSize = 10.5;
+        }
+        return (int)Math.round((hitDice * hpSize) + (bonusConstitution() * hitDice)) - 1;
+    }
+
     int bonusStrength() {
-        float value = (float) (charStrength - 10) / 2;
+        float value = (float) (strPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charStrength - 10) / 2) - 1;
+            return ((strPoints - 10) / 2) - 1;
         } else {
-            return (charStrength - 10) / 2;
+            return (strPoints - 10) / 2;
         }
     }
 
     int bonusDexterity() {
-        float value = (float) (charDexterity - 10) / 2;
+        float value = (float) (dexPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charDexterity - 10) / 2) - 1;
+            return ((dexPoints - 10) / 2) - 1;
         } else {
-            return (charDexterity - 10) / 2;
+            return (dexPoints - 10) / 2;
         }
     }
 
     int bonusConstitution() {
 
-        float value = (float) (charConstitution - 10) / 2;
+        float value = (float) (conPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charConstitution - 10) / 2) - 1;
+            return ((conPoints - 10) / 2) - 1;
         } else {
-            return (charConstitution - 10) / 2;
+            return (conPoints - 10) / 2;
         }
     }
 
     int bonusIntelligence() {
-        float value = (float) (charIntelligence - 10) / 2;
+        float value = (float) (intPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charIntelligence - 10) / 2) - 1;
+            return ((intPoints - 10) / 2) - 1;
         } else {
-            return (charIntelligence - 10) / 2;
+            return (intPoints - 10) / 2;
         }
     }
 
     int bonusWisdom() {
-        float value = (float) (charWisdom - 10) / 2;
+        float value = (float) (wisPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charWisdom - 10) / 2) - 1;
+            return ((wisPoints - 10) / 2) - 1;
         } else {
-            return (charWisdom - 10) / 2;
+            return (wisPoints - 10) / 2;
         }
     }
 
     int bonusCharisma() {
-        float value = (float) (charCharisma - 10) / 2;
+        float value = (float) (chaPoints - 10) / 2;
         if (value <= -0.1) {
-            return ((charCharisma - 10) / 2) - 1;
+            return ((chaPoints - 10) / 2) - 1;
         } else {
-            return (charCharisma - 10) / 2;
+            return (chaPoints - 10) / 2;
         }
     }
 
@@ -208,61 +340,5 @@ public abstract class Character implements SavingThrows, SkillCheck {
     @Override
     public int skillCheckSurvival() {
         return bonusWisdom() + dice.dTwenty();
-    }
-
-    public String getCharName() {
-        return charName;
-    }
-
-    public String getCharClass() {
-        return charClass;
-    }
-
-    public String getCharRace() {
-        return charRace;
-    }
-
-    public String getCharAlignment() {
-        return charAlignment;
-    }
-
-    public int getCharArmorClass() {
-        return charArmorClass;
-    }
-
-    public int getCharHitPoints() {
-        return charHitPoints;
-    }
-
-    public int getCharTempHitPoints() {
-        return charTempHitPoints;
-    }
-
-    public int getCharSpeed() {
-        return charSpeed;
-    }
-
-    public int getCharStrength() {
-        return charStrength;
-    }
-
-    public int getCharDexterity() {
-        return charDexterity;
-    }
-
-    public int getCharConstitution() {
-        return charConstitution;
-    }
-
-    public int getCharIntelligence() {
-        return charIntelligence;
-    }
-
-    public int getCharWisdom() {
-        return charWisdom;
-    }
-
-    public int getCharCharisma() {
-        return charCharisma;
     }
 }

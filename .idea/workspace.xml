@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added json files and a working json reader that uses Jackson.">
-      <change afterPath="$PROJECT_DIR$/enemies/adult_black_dragon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/sea_hag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DamageTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LegendaryAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SThrows.java" afterDir="false" />
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added more classes to handle the JSON arrays.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/adult black dragon.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/sea hag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ally.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ally.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CharacterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CharacterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
     </list>
@@ -237,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671133403894</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added more classes to handle the JSON arrays.">
+      <created>1671135150229</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671135150229</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -251,6 +254,7 @@
     <MESSAGE value="Formatted Code." />
     <MESSAGE value="Added json library." />
     <MESSAGE value="Added json files and a working json reader that uses Jackson." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added json files and a working json reader that uses Jackson." />
+    <MESSAGE value="Added more classes to handle the JSON arrays." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more classes to handle the JSON arrays." />
   </component>
 </project>

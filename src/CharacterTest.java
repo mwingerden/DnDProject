@@ -10,10 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CharacterTest {
     Character npc;
+
     @BeforeEach
     public void setUp() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        npc = mapper.readValue(new File("./enemies/thug.json"),Enemy.class);
+        npc = mapper.readValue(new File("./enemies/thug.json"), Enemy.class);
     }
 
     @Test
