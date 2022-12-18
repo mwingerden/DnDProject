@@ -6,7 +6,7 @@ import java.io.IOException;
 public class DnDInitiativeTracker {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Character enemy1 = mapper.readValue(new File("./enemies/sea_hag.json"), Enemy.class);
+        Character enemy1 = mapper.readValue(new File("./enemies/adult_black_dragon.json"), Enemy.class);
         System.out.println(enemy1);
     }
 }

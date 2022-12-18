@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -17,183 +18,183 @@ class CharacterTest {
         npc = mapper.readValue(new File("./enemies/thug.json"), Enemy.class);
     }
 
-    @Test
+    @RepeatedTest(100)
     void strengthBonus() {
-        int value = npc.bonusStrength();
+        int value = npc.statBonus("str");
         assertEquals(2, value);
     }
 
-    @Test
+    @RepeatedTest(100)
     void dexterityBonus() {
-        int value = npc.bonusDexterity();
+        int value = npc.statBonus("dex");
         assertEquals(0, value);
     }
 
-    @Test
+    @RepeatedTest(100)
     void constitutionBonus() {
-        int value = npc.bonusConstitution();
+        int value = npc.statBonus("con");
         assertEquals(2, value);
     }
 
-    @Test
+    @RepeatedTest(100)
     void intelligenceBonus() {
-        int value = npc.bonusIntelligence();
+        int value = npc.statBonus("int");
         assertEquals(0, value);
     }
 
     @Test
     void wisdomBonus() {
-        int value = npc.bonusWisdom();
+        int value = npc.statBonus("wis");
         assertEquals(0, value);
     }
 
-    @Test
+    @RepeatedTest(100)
     void charismaBonus() {
-        int value = npc.bonusCharisma();
+        int value = npc.statBonus("cha");
         assertEquals(0, value);
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowStrength() {
-        int value = npc.savingThrowStrength();
-        assertTrue(value >= 1 + npc.bonusStrength() && value <= 20 + npc.bonusStrength());
+        int value = npc.savingThrow("str");
+        assertTrue(value >= 1 + npc.statBonus("str") && value <= 20 + npc.statBonus("str"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowDexterity() {
-        int value = npc.savingThrowDexterity();
-        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
+        int value = npc.savingThrow("dex");
+        assertTrue(value >= 1 + npc.statBonus("dex") && value <= 20 + npc.statBonus("dex"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowConstitution() {
-        int value = npc.savingThrowConstitution();
-        assertTrue(value >= 1 + npc.bonusConstitution() && value <= 20 + npc.bonusConstitution());
+        int value = npc.savingThrow("con");
+        assertTrue(value >= 1 + npc.statBonus("con") && value <= 20 + npc.statBonus("con"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowIntelligence() {
-        int value = npc.savingThrowIntelligence();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.savingThrow("int");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowWisdom() {
-        int value = npc.savingThrowWisdom();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.savingThrow("wis");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void savingThrowCharisma() {
-        int value = npc.savingThrowCharisma();
-        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
+        int value = npc.savingThrow("cha");
+        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckAcrobatics() {
-        int value = npc.skillCheckAcrobatics();
-        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
+        int value = npc.skillCheck("Acrobatics");
+        assertTrue(value >= 1 + npc.statBonus("dex") && value <= 20 + npc.statBonus("dex"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckAnimalHandling() {
-        int value = npc.skillCheckAnimalHandling();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.skillCheck("Animal Handling");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckArcana() {
-        int value = npc.skillCheckArcana();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.skillCheck("Arcana");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckAthletics() {
-        int value = npc.skillCheckAthletics();
-        assertTrue(value >= 1 + npc.bonusStrength() && value <= 20 + npc.bonusStrength());
+        int value = npc.skillCheck("Athletics");
+        assertTrue(value >= 1 + npc.statBonus("str") && value <= 20 + npc.statBonus("str"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckDeception() {
-        int value = npc.skillCheckDeception();
-        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
+        int value = npc.skillCheck("Deception");
+        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckHistory() {
-        int value = npc.skillCheckHistory();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.skillCheck("History");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckInsight() {
-        int value = npc.skillCheckInsight();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.skillCheck("Insight");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckIntimidation() {
-        int value = npc.skillCheckIntimidation();
-        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
+        int value = npc.skillCheck("Intimidation");
+        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckInvestigation() {
-        int value = npc.skillCheckInvestigation();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.skillCheck("Investigation");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckMedicine() {
-        int value = npc.skillCheckMedicine();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.skillCheck("Medicine");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckNature() {
-        int value = npc.skillCheckNature();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.skillCheck("Nature");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckPerception() {
-        int value = npc.skillCheckPerception();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.skillCheck("Perception");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckPerformance() {
-        int value = npc.skillCheckPerformance();
-        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
+        int value = npc.skillCheck("Performance");
+        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckPersuasion() {
-        int value = npc.skillCheckPersuasion();
-        assertTrue(value >= 1 + npc.bonusCharisma() && value <= 20 + npc.bonusCharisma());
+        int value = npc.skillCheck("Persuasion");
+        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckReligion() {
-        int value = npc.skillCheckReligion();
-        assertTrue(value >= 1 + npc.bonusIntelligence() && value <= 20 + npc.bonusIntelligence());
+        int value = npc.skillCheck("Religion");
+        assertTrue(value >= 1 + npc.statBonus("int") && value <= 20 + npc.statBonus("int"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckSleightOfHand() {
-        int value = npc.skillCheckSleightOfHand();
-        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
+        int value = npc.skillCheck("Sleight Of Hand");
+        assertTrue(value >= 1 + npc.statBonus("dex") && value <= 20 + npc.statBonus("dex"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckStealth() {
-        int value = npc.skillCheckStealth();
-        assertTrue(value >= 1 + npc.bonusDexterity() && value <= 20 + npc.bonusDexterity());
+        int value = npc.skillCheck("Stealth");
+        assertTrue(value >= 1 + npc.statBonus("dex") && value <= 20 + npc.statBonus("dex"));
     }
 
-    @Test
+    @RepeatedTest(100)
     void skillCheckSurvival() {
-        int value = npc.skillCheckSurvival();
-        assertTrue(value >= 1 + npc.bonusWisdom() && value <= 20 + npc.bonusWisdom());
+        int value = npc.skillCheck("Survival");
+        assertTrue(value >= 1 + npc.statBonus("wis") && value <= 20 + npc.statBonus("wis"));
     }
 }

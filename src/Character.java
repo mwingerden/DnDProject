@@ -1,4 +1,7 @@
-public abstract class Character implements SavingThrows, SkillCheck {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Character {
     String name;
     String size;
     String type;
@@ -149,6 +152,45 @@ public abstract class Character implements SavingThrows, SkillCheck {
         this.dice = new Dice();
     }
 
+    public int statBonus(String check) {
+        int stat = -1;
+        List<Integer> stats = new ArrayList<>();
+        stats.add(strPoints);
+        stats.add(dexPoints);
+        stats.add(conPoints);
+        stats.add(intPoints);
+        stats.add(wisPoints);
+        stats.add(chaPoints);
+        if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
+            stat = 0;
+        }
+        else if(check.equalsIgnoreCase("dex") || check.equalsIgnoreCase("dexterity")) {
+            stat = 1;
+        }
+        else if(check.equalsIgnoreCase("con") || check.equalsIgnoreCase("constitution")) {
+            stat = 2;
+        }
+        else if(check.equalsIgnoreCase("int") || check.equalsIgnoreCase("intelligence")) {
+            stat = 3;
+        }
+        else if(check.equalsIgnoreCase("wis") || check.equalsIgnoreCase("wisdom")) {
+            stat = 4;
+        }
+        else if(check.equalsIgnoreCase("cha") || check.equalsIgnoreCase("charisma")) {
+            stat = 5;
+        }
+        else {
+            return stat;
+        }
+
+        float value = (float) (stats.get(stat) - 10) / 2;
+        if (value <= -0.1) {
+            return ((stats.get(stat) - 10) / 2) - 1;
+        } else {
+            return (stats.get(stat) - 10) / 2;
+        }
+    }
+
     int calHitPoints() {
         double hpSize = 0;
         if(size.compareToIgnoreCase("tiny") == 0) {
@@ -164,181 +206,114 @@ public abstract class Character implements SavingThrows, SkillCheck {
         }else if (size.compareToIgnoreCase("gargantuan") == 0) {
             hpSize = 10.5;
         }
-        return (int)Math.round((hitDice * hpSize) + (bonusConstitution() * hitDice)) - 1;
+        return (int)Math.round((hitDice * hpSize) + (statBonus("con") * hitDice)) - 1;
     }
 
-    int bonusStrength() {
-        float value = (float) (strPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((strPoints - 10) / 2) - 1;
-        } else {
-            return (strPoints - 10) / 2;
+    public int savingThrow(String check) {
+        int roll = 0;
+        roll += dice.dTwenty();
+        if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
+            roll += statBonus("str");
         }
-    }
-
-    int bonusDexterity() {
-        float value = (float) (dexPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((dexPoints - 10) / 2) - 1;
-        } else {
-            return (dexPoints - 10) / 2;
+        else if(check.equalsIgnoreCase("dex") || check.equalsIgnoreCase("dexterity")) {
+            roll +=  statBonus("dex");
         }
-    }
-
-    int bonusConstitution() {
-
-        float value = (float) (conPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((conPoints - 10) / 2) - 1;
-        } else {
-            return (conPoints - 10) / 2;
+        else if(check.equalsIgnoreCase("con") || check.equalsIgnoreCase("constitution")) {
+            roll +=  statBonus("con");
         }
-    }
-
-    int bonusIntelligence() {
-        float value = (float) (intPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((intPoints - 10) / 2) - 1;
-        } else {
-            return (intPoints - 10) / 2;
+        else if(check.equalsIgnoreCase("int") || check.equalsIgnoreCase("intelligence")) {
+            roll +=  statBonus("int");
         }
-    }
-
-    int bonusWisdom() {
-        float value = (float) (wisPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((wisPoints - 10) / 2) - 1;
-        } else {
-            return (wisPoints - 10) / 2;
+        else if(check.equalsIgnoreCase("wis") || check.equalsIgnoreCase("wisdom")) {
+            roll +=  statBonus("wis");
         }
-    }
-
-    int bonusCharisma() {
-        float value = (float) (chaPoints - 10) / 2;
-        if (value <= -0.1) {
-            return ((chaPoints - 10) / 2) - 1;
-        } else {
-            return (chaPoints - 10) / 2;
+        else if(check.equalsIgnoreCase("cha") || check.equalsIgnoreCase("charisma")) {
+            roll +=  statBonus("cha");
         }
+        else {
+            roll = 0;
+        }
+        return roll;
+    }
+
+    public int skillCheck(String check) {
+        int roll = 0;
+        roll += dice.dTwenty();
+        if(check.equalsIgnoreCase("acrobatics")) {
+            roll += statBonus("dex");
+        }
+        else if(check.equalsIgnoreCase("animal handling")) {
+            roll += statBonus("wis");
+        }
+        else if(check.equalsIgnoreCase("arcana")) {
+            roll += statBonus("int");
+        }
+        else if(check.equalsIgnoreCase("athletics")) {
+            roll += statBonus("str");
+        }
+        else if(check.equalsIgnoreCase("deception")) {
+            roll += statBonus("cha");
+        }
+        else if(check.equalsIgnoreCase("history")) {
+            roll += statBonus("int");
+        }
+        else if(check.equalsIgnoreCase("insight")) {
+            roll += statBonus("wis");
+        }
+        else if(check.equalsIgnoreCase("intimidation")) {
+            roll += statBonus("cha");
+        }
+        else if(check.equalsIgnoreCase("investigation")) {
+            roll += statBonus("int");
+        }
+        else if(check.equalsIgnoreCase("medicine")) {
+            roll += statBonus("wis");
+        }
+        else if(check.equalsIgnoreCase("nature")) {
+            roll += statBonus("int");
+        }
+        else if(check.equalsIgnoreCase("perception")) {
+            roll += statBonus("wis");
+        }
+        else if(check.equalsIgnoreCase("performance")) {
+            roll += statBonus("cha");
+        }
+        else if(check.equalsIgnoreCase("persuasion")) {
+            roll += statBonus("cha");
+        }
+        else if(check.equalsIgnoreCase("religion")) {
+            roll += statBonus("int");
+        }
+        else if(check.equalsIgnoreCase("sleight of hand")) {
+            roll += statBonus("dex") ;
+        }
+        else if(check.equalsIgnoreCase("stealth")) {
+            roll += statBonus("dex");
+        }
+        else if(check.equalsIgnoreCase("survival")) {
+            roll += statBonus("wis");
+        }
+        else {
+            roll = 0;
+        }
+        return roll;
     }
 
     @Override
-    public int savingThrowStrength() {
-        return bonusStrength() + dice.dTwenty();
-    }
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(name).append("\n");
+        str.append(size).append(" ").append(type).append("(").append(tag).append(")").append(", ").append(alignment).append("\n");
+        str.append("Armor Class ").append(otherArmorDesc).append("\n");
+        str.append("Hit Points ").append(calHitPoints()).append("\n");
+        str.append("Speed ").append(speed).append("ft.\n");
+        str.append("STR:").append(strPoints).append("(+").append(statBonus("str")).append(")").append(" DEX:")
+                .append(dexPoints).append("(+").append(statBonus("dex")).append(")").append(" CON:")
+                .append(conPoints).append("(+").append(statBonus("con")).append(")").append(" INT:")
+                .append(intPoints).append("(+").append(statBonus("int")).append(")").append(" WIS:")
+                .append(wisPoints).append("(+").append(statBonus("wis")).append(")").append(" CHA:")
+                .append(chaPoints).append("(+").append(statBonus("cha")).append(")\n");
 
-    @Override
-    public int savingThrowDexterity() {
-        return bonusDexterity() + dice.dTwenty();
-    }
-
-    @Override
-    public int savingThrowConstitution() {
-        return bonusConstitution() + dice.dTwenty();
-    }
-
-    @Override
-    public int savingThrowIntelligence() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int savingThrowWisdom() {
-        return bonusWisdom() + dice.dTwenty();
-    }
-
-    @Override
-    public int savingThrowCharisma() {
-        return bonusCharisma() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckAcrobatics() {
-        return bonusDexterity() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckAnimalHandling() {
-        return bonusWisdom() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckArcana() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckAthletics() {
-        return bonusStrength() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckDeception() {
-        return bonusCharisma() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckHistory() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckInsight() {
-        return bonusWisdom() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckIntimidation() {
-        return bonusCharisma() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckInvestigation() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckMedicine() {
-        return bonusWisdom() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckNature() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckPerception() {
-        return bonusWisdom() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckPerformance() {
-        return bonusCharisma() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckPersuasion() {
-        return bonusCharisma() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckReligion() {
-        return bonusIntelligence() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckSleightOfHand() {
-        return bonusDexterity() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckStealth() {
-        return bonusDexterity() + dice.dTwenty();
-    }
-
-    @Override
-    public int skillCheckSurvival() {
-        return bonusWisdom() + dice.dTwenty();
+        return str.toString();
     }
 }

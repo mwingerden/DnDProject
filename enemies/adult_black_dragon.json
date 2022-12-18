@@ -121,7 +121,8 @@
   "skills": [
     {
       "name": "perception",
-      "stat": "wis"
+      "stat": "wis",
+      "note": "(ex)"
     },
     {
       "name": "stealth",
@@ -131,7 +132,7 @@
   "damagetypes": [
     {
       "name": "acid",
-      "note": " (Immune)",
+      "note": "(Immune)",
       "type": "i"
     }
   ],

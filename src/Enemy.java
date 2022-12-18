@@ -79,16 +79,5 @@ public class Enemy extends Character {
                 languages, understandsBut, shortName, pluralName, doubleColumns, separationPoint, damage);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append(name).append("\n");
-        str.append(size).append(" ").append(type).append("(").append(tag).append(")").append(", ").append(alignment).append("\n");
-        str.append("Armor Class ").append(otherArmorDesc).append("\n");
-        str.append("Hit Points ").append(calHitPoints()).append("\n");
-        str.append("Speed ").append(speed).append("ft.\n");
-        str.append("STR:").append(strPoints).append("(+").append(bonusStrength()).append(")").append(" DEX:").append(dexPoints).append("(+").append(bonusDexterity()).append(")").append(" CON:").append(conPoints).append("(+").append(bonusConstitution()).append(")").append(" INT:").append(intPoints).append("(+").append(bonusIntelligence()).append(")").append(" WIS:").append(wisPoints).append("(+").append(bonusWisdom()).append(")").append(" CHA:").append(chaPoints).append("(+").append(bonusCharisma()).append(")\n");
 
-        return str.toString();
-    }
 }
