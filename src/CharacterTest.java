@@ -18,25 +18,25 @@ class CharacterTest {
         npc = mapper.readValue(new File("./enemies/thug.json"), Enemy.class);
     }
 
-    @RepeatedTest(100)
+    @Test
     void strengthBonus() {
         int value = npc.statBonus("str");
         assertEquals(2, value);
     }
 
-    @RepeatedTest(100)
+    @Test
     void dexterityBonus() {
         int value = npc.statBonus("dex");
         assertEquals(0, value);
     }
 
-    @RepeatedTest(100)
+    @Test
     void constitutionBonus() {
         int value = npc.statBonus("con");
         assertEquals(2, value);
     }
 
-    @RepeatedTest(100)
+    @Test
     void intelligenceBonus() {
         int value = npc.statBonus("int");
         assertEquals(0, value);
@@ -48,7 +48,7 @@ class CharacterTest {
         assertEquals(0, value);
     }
 
-    @RepeatedTest(100)
+    @Test
     void charismaBonus() {
         int value = npc.statBonus("cha");
         assertEquals(0, value);

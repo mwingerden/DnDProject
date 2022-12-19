@@ -2,73 +2,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Character {
-    String name;
-    String size;
-    String type;
-    String tag;
-    String alignment;
-    int hitDice;
-    String armorName;
-    int shieldBonus;
-    int natArmorBonus;
-    String otherArmorDesc;
-    int speed;
-    int burrowSpeed;
-    int climbSpeed;
-    int flySpeed;
-    boolean hover;
-    int swimSpeed;
-    boolean customHP;
-    boolean customSpeed;
-    String hpText;
-    String speedDesc;
-    int strPoints;
-    int dexPoints;
-    int conPoints;
-    int intPoints;
-    int wisPoints;
-    int chaPoints;
-    int blindsight;
-    boolean blind;
-    int darkvision;
-    int tremorsense;
-    int truesight;
-    int telepathy;
-    String cr;
-    String customCr;
-    int customProf;
-    boolean isLegendary;
-    String legendariesDescription;
-    boolean isLair;
-    String lairDescription;
-    String lairDescriptionEnd;
-    boolean isMythic;
-    String mythicDescription;
-    boolean isRegional;
-    String regionalDescription;
-    String regionalDescriptionEnd;
-    String[] properties;
-    Abilities[] abilities;
-    Actions[] actions;
-    String[] bonusActions;
-    String[] reactions;
-    LegendaryAction[] legendaries;
-    String[] mythics;
-    String[] lairs;
-    String[] regionals;
-    SThrows[] sthrows;
-    Skills[] skills;
-    DamageTypes[] damagetypes;
-    String[] specialdamage;
-    String[] conditions;
-    Languages[] languages;
-    String understandsBut;
-    String shortName;
-    String pluralName;
-    boolean doubleColumns;
-    int separationPoint;
-    String[] damage;
-    Dice dice;
+    private final String name;
+    private final String size;
+    private final String type;
+    private final String tag;
+    private final String alignment;
+    private final int hitDice;
+    private final String armorName;
+    private final int shieldBonus;
+    private final int natArmorBonus;
+    private final String otherArmorDesc;
+    private final int speed;
+    private final int burrowSpeed;
+    private final int climbSpeed;
+    private final int flySpeed;
+    private final boolean hover;
+    private final int swimSpeed;
+    private final boolean customHP;
+    private final boolean customSpeed;
+    private final String hpText;
+    private final String speedDesc;
+    private final int strPoints;
+    private final int dexPoints;
+    private final int conPoints;
+    private final int intPoints;
+    private final int wisPoints;
+    private final int chaPoints;
+    private final int blindsight;
+    private final boolean blind;
+    private final int darkvision;
+    private final int tremorsense;
+    private final int truesight;
+    private final int telepathy;
+    private final String cr;
+    private final String customCr;
+    private final int customProf;
+    private final boolean isLegendary;
+    private final String legendariesDescription;
+    private final boolean isLair;
+    private final String lairDescription;
+    private final String lairDescriptionEnd;
+    private final boolean isMythic;
+    private final String mythicDescription;
+    private final boolean isRegional;
+    private final String regionalDescription;
+    private final String regionalDescriptionEnd;
+    private final String[] properties;
+    private final Abilities[] abilities;
+    private final Actions[] actions;
+    private final String[] bonusActions;
+    private final String[] reactions;
+    private final LegendaryAction[] legendaries;
+    private final String[] mythics;
+    private final String[] lairs;
+    private final String[] regionals;
+    private final SThrows[] sthrows;
+    private final Skills[] skills;
+    private final DamageTypes[] damagetypes;
+    private final String[] specialdamage;
+    private final String[] conditions;
+    private final Languages[] languages;
+    private final String understandsBut;
+    private final String shortName;
+    private final String pluralName;
+    private final boolean doubleColumns;
+    private final int separationPoint;
+    private final String[] damage;
+    private final Dice dice;
+
+    private final ChallengeCharacterBonus cb;
 
     public Character(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
                      int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
@@ -150,9 +152,10 @@ public abstract class Character {
         this.separationPoint = separationPoint;
         this.damage = damage;
         this.dice = new Dice();
+        this.cb = new ChallengeCharacterBonus();
     }
 
-    public int statBonus(String check) {
+    int statBonus(String check) {
         int stat = -1;
         List<Integer> stats = new ArrayList<>();
         stats.add(strPoints);
@@ -161,6 +164,7 @@ public abstract class Character {
         stats.add(intPoints);
         stats.add(wisPoints);
         stats.add(chaPoints);
+
         if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
             stat = 0;
         }
@@ -209,36 +213,65 @@ public abstract class Character {
         return (int)Math.round((hitDice * hpSize) + (statBonus("con") * hitDice)) - 1;
     }
 
-    public int savingThrow(String check) {
+    int savingThrow(String check) {
         int roll = 0;
+        int order;
         roll += dice.dTwenty();
+        System.out.println("Saving Throw Roll: " + roll);
+
         if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
-            roll += statBonus("str");
+            roll += statBonus(check);
+            order = 0;
         }
         else if(check.equalsIgnoreCase("dex") || check.equalsIgnoreCase("dexterity")) {
-            roll +=  statBonus("dex");
+            roll += statBonus(check);
+            order = 1;
         }
         else if(check.equalsIgnoreCase("con") || check.equalsIgnoreCase("constitution")) {
-            roll +=  statBonus("con");
+            roll += statBonus(check);
+            order = 2;
         }
         else if(check.equalsIgnoreCase("int") || check.equalsIgnoreCase("intelligence")) {
-            roll +=  statBonus("int");
+            roll += statBonus(check);
+            order = 3;
         }
         else if(check.equalsIgnoreCase("wis") || check.equalsIgnoreCase("wisdom")) {
-            roll +=  statBonus("wis");
+            roll += statBonus(check);
+            order = 4;
         }
         else if(check.equalsIgnoreCase("cha") || check.equalsIgnoreCase("charisma")) {
-            roll +=  statBonus("cha");
+            roll += statBonus(check);
+            order = 5;
         }
         else {
-            roll = 0;
+            return 0;
         }
+
+        for(SThrows sThrow : sthrows) {
+            if(sThrow.getOrder() == order) {
+                roll += cb.crBonus(cr);
+            }
+        }
+
         return roll;
     }
 
-    public int skillCheck(String check) {
+    int skillCheck(String check) {
         int roll = 0;
         roll += dice.dTwenty();
+        System.out.println("Skill Check Roll: " + roll);
+
+        for(Skills skill : skills) {
+            if(skill.getName().equalsIgnoreCase(check)) {
+                if(skill.getNote() != null) {
+                    roll += cb.crBonus(cr) * 2;
+                }
+                else {
+                    roll += cb.crBonus(cr);
+                }
+            }
+        }
+
         if(check.equalsIgnoreCase("acrobatics")) {
             roll += statBonus("dex");
         }
