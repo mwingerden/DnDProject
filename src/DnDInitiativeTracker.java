@@ -6,9 +6,9 @@ import java.io.IOException;
 public class DnDInitiativeTracker {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Character enemy1 = mapper.readValue(new File("./enemies/adult_black_dragon.json"), Enemy.class);
-        System.out.println(enemy1);
-        System.out.println(enemy1.savingThrow("con"));
-        System.out.println(enemy1.skillCheck("stealth"));
+        Character enemy1 = mapper.readValue(new File("./enemies/thug.json"), Enemy.class);
+        InitiativeTracker tracker = new InitiativeTracker();
+        tracker.addCharacter(enemy1, 5);
+        System.out.println(tracker);
     }
 }

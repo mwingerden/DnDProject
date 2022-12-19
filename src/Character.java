@@ -195,6 +195,10 @@ public abstract class Character {
         }
     }
 
+    int rollInitiative() {
+        return dice.dTwenty() + statBonus("dex");
+    }
+
     int calHitPoints() {
         double hpSize = 0;
         if(size.compareToIgnoreCase("tiny") == 0) {
@@ -348,5 +352,9 @@ public abstract class Character {
                 .append(chaPoints).append("(+").append(statBonus("cha")).append(")\n");
 
         return str.toString();
+    }
+
+    public String getName() {
+        return name;
     }
 }

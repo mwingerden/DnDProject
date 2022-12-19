@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added more classes to handle the JSON arrays.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added saving throws and skills bonuses implementation.">
+      <change afterPath="$PROJECT_DIR$/src/CharacterTurn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InitiativeTracker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CharacterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CharacterTest.java" afterDir="false" />
@@ -99,21 +100,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterTest.savingThrowStrength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" value="savingThrowStrength" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CharacterTest.skillCheckAcrobatics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DnDProject" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CharacterTest" />
       <option name="METHOD_NAME" value="skillCheckAcrobatics" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CharacterTest.skillCheckIntimidation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
+      <option name="METHOD_NAME" value="skillCheckIntimidation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,19 +131,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.DnDInitiativeTracker" />
+      <item itemvalue="JUnit.CharacterTest.skillCheckIntimidation" />
       <item itemvalue="JUnit.DiceTest" />
       <item itemvalue="JUnit.CharacterTest" />
       <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
-      <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
       <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CharacterTest" />
+        <item itemvalue="JUnit.CharacterTest.skillCheckIntimidation" />
         <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
         <item itemvalue="JUnit.CharacterTest.savingThrowCharisma" />
-        <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671135150229</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added saving throws and skills bonuses implementation.">
+      <created>1671475325066</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1671475325066</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,6 +262,7 @@
     <MESSAGE value="Added json library." />
     <MESSAGE value="Added json files and a working json reader that uses Jackson." />
     <MESSAGE value="Added more classes to handle the JSON arrays." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more classes to handle the JSON arrays." />
+    <MESSAGE value="Added saving throws and skills bonuses implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added saving throws and skills bonuses implementation." />
   </component>
 </project>

@@ -135,7 +135,8 @@ class CharacterTest {
     @RepeatedTest(100)
     void skillCheckIntimidation() {
         int value = npc.skillCheck("Intimidation");
-        assertTrue(value >= 1 + npc.statBonus("cha") && value <= 20 + npc.statBonus("cha"));
+        ChallengeCharacterBonus cb = new ChallengeCharacterBonus();
+        assertTrue(value >= 1 + npc.statBonus("cha") + cb.crBonus("1/2") && value <= 20 + npc.statBonus("cha") + cb.crBonus("1/2"));
     }
 
     @RepeatedTest(100)
