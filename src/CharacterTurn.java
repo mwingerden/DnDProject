@@ -1,16 +1,12 @@
 public class CharacterTurn {
-    Character character;
-    int initiative;
-    int hp;
+    private final Character character;
+    private final int initiative;
+    private final int hp;
 
     public CharacterTurn(Character character, int initiative) {
         this.character = character;
         this.initiative = initiative;
         this.hp = character.calHitPoints();
-    }
-
-    public Character getCharacter() {
-        return character;
     }
 
     public int getInitiative() {

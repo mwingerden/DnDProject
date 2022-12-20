@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class InitiativeTracker {
-    List<CharacterTurn> tracker;
+    private final List<CharacterTurn> tracker;
 
     public InitiativeTracker() {
         this.tracker = new ArrayList<>();
@@ -14,6 +14,10 @@ public class InitiativeTracker {
             tracker.add(new CharacterTurn(character, character.rollInitiative()));
         }
         tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
+    }
+
+    int isEmpty() {
+        return tracker.size();
     }
 
     @Override
