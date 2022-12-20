@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class InitiativeTracker {
@@ -12,7 +13,7 @@ public class InitiativeTracker {
         for(int i = 1; i <= amount; i++) {
             tracker.add(new CharacterTurn(character, character.rollInitiative()));
         }
-        //TODO: Add compareTo
+        tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
     }
 
     @Override
