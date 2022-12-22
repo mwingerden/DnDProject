@@ -14,7 +14,7 @@ public class UI {
         mapper = new ObjectMapper();
     }
 
-    public void userInput() throws IOException {
+    public void addEnemy() throws IOException {
         Scanner scanner = new Scanner(System.in);
         String enemyName;
         int enemyAmount;
@@ -40,7 +40,7 @@ public class UI {
 
     public void battleDisplay() {
         if(initiativeTracker.isEmpty() > 1) {
-            System.out.println(initiativeTracker);
+            initiativeTracker.battle();
         }
         else {
             System.out.println("No enemies entered.");

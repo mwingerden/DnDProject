@@ -20,6 +20,13 @@ public class InitiativeTracker {
         return tracker.size();
     }
 
+    void battle() {
+        int turnTracker = 1;
+        for(CharacterTurn ct : tracker) {
+
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

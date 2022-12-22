@@ -13,6 +13,14 @@ public class CharacterTurn {
         return initiative;
     }
 
+    public Character getCharacter() {
+        return character;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
     @Override
     public String toString() {
         return "Initiative: " + this.initiative + ", Name: " + this.character.getName() + ", HP: " + this.hp + "\n";
