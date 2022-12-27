@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class InitiativeTracker {
     private final List<CharacterTurn> tracker;
@@ -21,10 +22,31 @@ public class InitiativeTracker {
     }
 
     void battle() {
-        int turnTracker = 1;
-        for(CharacterTurn ct : tracker) {
-
-        }
+        Scanner scanner = new Scanner(System.in);
+        int turnTracker = 0;
+        String option;
+        int count = 1;
+        int countTwo;
+        System.out.println("Turn: " + count++);
+        do {
+            countTwo = 1;
+            for(CharacterTurn ct : tracker) {
+                System.out.print(countTwo + ")" + ct);
+            }
+            Character character = tracker.get(turnTracker++).getCharacter();
+            System.out.println("\n" + character);
+            if(turnTracker >= tracker.size()) {
+                turnTracker = 0;
+            }
+            System.out.println("\nClick next for the next character in turn order: ");
+            option = scanner.nextLine();
+            if(option.equalsIgnoreCase("next")) {
+                System.out.println("Turn: " + count++);
+            }
+            else if(option.equalsIgnoreCase("health")) {
+                System.out.println("Enter the corresponding number of the enemy: ");
+            }
+        }while(!option.equalsIgnoreCase("end"));
     }
 
     @Override
