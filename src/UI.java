@@ -14,7 +14,7 @@ public class UI {
         mapper = new ObjectMapper();
     }
 
-    public void addEnemy() throws IOException {
+    void addEnemy() throws IOException {
         Scanner scanner = new Scanner(System.in);
         String enemyName;
         int enemyAmount;
@@ -35,11 +35,10 @@ public class UI {
             Character enemy = mapper.readValue(new File("./enemies/" + enemyName + ".json"), Enemy.class);
             initiativeTracker.addCharacter(enemy, enemyAmount);
         }while(!Objects.equals(enemyName, ""));
-
     }
 
-    public void battleDisplay() {
-        if(initiativeTracker.isEmpty() > 1) {
+    void battleDisplay() throws IOException {
+        if(initiativeTracker.isEmpty() > 0) {
             initiativeTracker.battle();
         }
         else {

@@ -1,7 +1,8 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class InitiativeTracker {
     private final List<CharacterTurn> tracker;
@@ -21,34 +22,46 @@ public class InitiativeTracker {
         return tracker.size();
     }
 
-    void battle() {
+    void battle() throws IOException {
         Scanner scanner = new Scanner(System.in);
         int turnTracker = 0;
         String option;
         int roundCounter = 1;
         int characterCounter;
         do {
-            if(tracker.isEmpty()) {
-                return;
-            }
-            System.out.println("Turn: " + roundCounter++);
             characterCounter = 1;
-            for(CharacterTurn ct : tracker) {
-                System.out.print(characterCounter++ + ")" + ct);
+            while(true) {
+                if(tracker.isEmpty()) {
+                    return;
+                }
+                System.out.println("Turn: " + roundCounter);
+                for(CharacterTurn ct : tracker) {
+                    System.out.print(characterCounter++ + ")" + ct);
+                }
+                if(turnTracker >= tracker.size()) {
+                    turnTracker = 0;
+                }
+                Character character = tracker.get(turnTracker).getCharacter();
+                System.out.println("\n" + character);
+                System.out.println("\nEnter Option(Enter nothing for next turn): ");
+                System.out.println("1.) health");
+                System.out.println("2.) add");
+                System.out.println("3.) end");
+                option = scanner.nextLine();
+                if(option.equalsIgnoreCase("health") || option.equals(("1"))) {
+                    healthOption();
+                    checkTracker();
+                }
+                else if(option.equalsIgnoreCase("add") || option.equals("2")) {
+                    addMoreCharacters();
+                }
+                else {
+                    break;
+                }
             }
-            if(turnTracker >= tracker.size()) {
-                turnTracker = 0;
-            }
-            Character character = tracker.get(turnTracker++).getCharacter();
-            System.out.println("\n" + character);
-            System.out.println("\nEnter Option(Enter nothing for next turn): ");
-            System.out.println("1.) health");
-            option = scanner.nextLine();
-            if(option.equalsIgnoreCase("health") || option.equalsIgnoreCase("1")) {
-                healthOption();
-                checkTracker();
-            }
-        }while(!option.equalsIgnoreCase("end"));
+            roundCounter++;
+            turnTracker++;
+        }while(!(option.equalsIgnoreCase("end") || option.equals("3")));
     }
 
     void checkTracker() {
@@ -68,6 +81,30 @@ public class InitiativeTracker {
         option = scanner.nextLine();
         instance.setHp(instance.getHp() + Integer.parseInt(option));
         System.out.println();
+    }
+
+    void addMoreCharacters() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Scanner scanner = new Scanner(System.in);
+        String enemyName;
+        int enemyAmount;
+        do {
+            System.out.println("Enter enemy name(hit return if done): ");
+            enemyName = scanner.nextLine();
+            if(!Objects.equals(enemyName, "")) {
+                enemyName = enemyName.replaceAll(" ", "_");
+                System.out.println("Enter enemy amount(Enter 0 to cancel): ");
+                enemyAmount = Integer.parseInt(scanner.nextLine());
+                if(enemyAmount < 0) {
+                    System.out.println("Enter a number that isn't negative");
+                }
+            }
+            else {
+                return;
+            }
+            Character enemy = mapper.readValue(new File("./enemies/" + enemyName + ".json"), Enemy.class);
+            addCharacter(enemy, enemyAmount);
+        }while(!Objects.equals(enemyName, ""));
     }
 
     @Override
