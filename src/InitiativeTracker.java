@@ -25,28 +25,49 @@ public class InitiativeTracker {
         Scanner scanner = new Scanner(System.in);
         int turnTracker = 0;
         String option;
-        int count = 1;
-        int countTwo;
-        System.out.println("Turn: " + count++);
+        int roundCounter = 1;
+        int characterCounter;
         do {
-            countTwo = 1;
-            for(CharacterTurn ct : tracker) {
-                System.out.print(countTwo + ")" + ct);
+            if(tracker.isEmpty()) {
+                return;
             }
-            Character character = tracker.get(turnTracker++).getCharacter();
-            System.out.println("\n" + character);
+            System.out.println("Turn: " + roundCounter++);
+            characterCounter = 1;
+            for(CharacterTurn ct : tracker) {
+                System.out.print(characterCounter++ + ")" + ct);
+            }
             if(turnTracker >= tracker.size()) {
                 turnTracker = 0;
             }
-            System.out.println("\nClick next for the next character in turn order: ");
+            Character character = tracker.get(turnTracker++).getCharacter();
+            System.out.println("\n" + character);
+            System.out.println("\nEnter Option(Enter nothing for next turn): ");
+            System.out.println("1.) health");
             option = scanner.nextLine();
-            if(option.equalsIgnoreCase("next")) {
-                System.out.println("Turn: " + count++);
-            }
-            else if(option.equalsIgnoreCase("health")) {
-                System.out.println("Enter the corresponding number of the enemy: ");
+            if(option.equalsIgnoreCase("health") || option.equalsIgnoreCase("1")) {
+                healthOption();
+                checkTracker();
             }
         }while(!option.equalsIgnoreCase("end"));
+    }
+
+    void checkTracker() {
+        tracker.removeIf(ct -> ct.getHp() <= 0);
+    }
+
+    void healthOption() {
+        Scanner scanner = new Scanner(System.in);
+        String option;
+        System.out.println("Enter the corresponding number of the enemy: ");
+        option = scanner.nextLine();
+        if(Integer.parseInt(option) <= -1 || Integer.parseInt(option) >= tracker.size()) {
+            System.out.println("Please enter appropriate number.");
+        }
+        CharacterTurn instance = tracker.get(Integer.parseInt(option) - 1);
+        System.out.println("Enter positive number for adding or negative number for subtraction: ");
+        option = scanner.nextLine();
+        instance.setHp(instance.getHp() + Integer.parseInt(option));
+        System.out.println();
     }
 
     @Override

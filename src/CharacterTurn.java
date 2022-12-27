@@ -1,12 +1,12 @@
 public class CharacterTurn {
     private final Character character;
     private final int initiative;
-    private final int hp;
+    private int hp;
 
     public CharacterTurn(Character character, int initiative) {
         this.character = character;
         this.initiative = initiative;
-        this.hp = character.calHitPoints();
+        this.hp = character.getHealth();
     }
 
     public int getInitiative() {
@@ -21,8 +21,15 @@ public class CharacterTurn {
         return hp;
     }
 
+    public void setHp(int hp) {
+        this.hp = hp;
+        character.setHealth(hp);
+    }
+
     @Override
     public String toString() {
         return "Initiative: " + this.initiative + ", Name: " + this.character.getName() + ", HP: " + this.hp + "\n";
     }
+
+
 }

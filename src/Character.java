@@ -8,6 +8,7 @@ public abstract class Character {
     private final String tag;
     private final String alignment;
     private final int hitDice;
+    private int health;
     private final String armorName;
     private final int shieldBonus;
     private final int natArmorBonus;
@@ -153,6 +154,7 @@ public abstract class Character {
         this.damage = damage;
         this.dice = new Dice();
         this.cb = new ChallengeCharacterBonus();
+        calHitPoints();
     }
 
     int statBonus(String check) {
@@ -199,7 +201,7 @@ public abstract class Character {
         return dice.dTwenty() + statBonus("dex");
     }
 
-    int calHitPoints() {
+    void calHitPoints() {
         double hpSize = 0;
         if(size.compareToIgnoreCase("tiny") == 0) {
             hpSize = 2.5;
@@ -214,7 +216,7 @@ public abstract class Character {
         }else if (size.compareToIgnoreCase("gargantuan") == 0) {
             hpSize = 10.5;
         }
-        return (int)Math.round((hitDice * hpSize) + (statBonus("con") * hitDice)) - 1;
+        health = (int)Math.round((hitDice * hpSize) + (statBonus("con") * hitDice)) - 1;
     }
 
     int savingThrow(String check) {
@@ -342,7 +344,7 @@ public abstract class Character {
         str.append(name).append("\n");
         str.append(size).append(" ").append(type).append("(").append(tag).append(")").append(", ").append(alignment).append("\n");
         str.append("Armor Class ").append(otherArmorDesc).append("\n");
-        str.append("Hit Points ").append(calHitPoints()).append("\n");
+        str.append("Hit Points ").append(health).append("\n");
         str.append("Speed ").append(speed).append("ft.\n");
         str.append("STR:").append(strPoints).append("(+").append(statBonus("str")).append(")").append(" DEX:")
                 .append(dexPoints).append("(+").append(statBonus("dex")).append(")").append(" CON:")
@@ -354,7 +356,15 @@ public abstract class Character {
         return str.toString();
     }
 
-    public String getName() {
+    String getName() {
         return name;
+    }
+
+    int getHealth() {
+        return this.health;
+    }
+
+    void setHealth(int health) {
+        this.health = health;
     }
 }
