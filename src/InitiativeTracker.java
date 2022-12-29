@@ -28,6 +28,7 @@ public class InitiativeTracker {
         String option;
         int roundCounter = 1;
         int characterCounter;
+        Character character;
         do {
             characterCounter = 1;
             while(true) {
@@ -41,7 +42,7 @@ public class InitiativeTracker {
                 if(turnTracker >= tracker.size()) {
                     turnTracker = 0;
                 }
-                Character character = tracker.get(turnTracker).getCharacter();
+                character = tracker.get(turnTracker).getCharacter();
                 System.out.println("\n" + character);
                 System.out.println("\nEnter Option(Enter nothing for next turn): ");
                 System.out.println("1.) health");
@@ -58,6 +59,11 @@ public class InitiativeTracker {
                 else {
                     break;
                 }
+                for(CharacterTurn ct : tracker) {
+                    if(ct.getCharacter().hashCode() == character.hashCode()) {
+                        turnTracker = tracker.indexOf(ct);
+                    }
+                }
             }
             roundCounter++;
             turnTracker++;
@@ -73,7 +79,7 @@ public class InitiativeTracker {
         String option;
         System.out.println("Enter the corresponding number of the enemy: ");
         option = scanner.nextLine();
-        if(Integer.parseInt(option) <= -1 || Integer.parseInt(option) >= tracker.size()) {
+        if(Integer.parseInt(option) <= -1 || Integer.parseInt(option) >= tracker.size() + 1) {
             System.out.println("Please enter appropriate number.");
         }
         CharacterTurn instance = tracker.get(Integer.parseInt(option) - 1);
