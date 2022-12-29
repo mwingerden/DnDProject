@@ -6,20 +6,89 @@ import java.util.*;
 
 public class InitiativeTracker {
     private final List<CharacterTurn> tracker;
+    private final ObjectMapper mapper;
 
     public InitiativeTracker() {
         this.tracker = new ArrayList<>();
+        this.mapper = new ObjectMapper();
     }
 
-    void addCharacter(Character character, int amount) {
+    void addCharacter(Character character, int amount, int initiative) {
         for(int i = 1; i <= amount; i++) {
-            tracker.add(new CharacterTurn(character, character.rollInitiative()));
+            tracker.add(new CharacterTurn(character, initiative));
         }
         tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
     }
 
     int isEmpty() {
         return tracker.size();
+    }
+
+    void addPlayer() {
+        Scanner scanner = new Scanner(System.in);
+        String playerName;
+        String initiative;
+        do {
+            System.out.println("Enter player name(hit return if done): ");
+            playerName = scanner.nextLine();
+            if(!Objects.equals(playerName, "")) {
+                Character character = new Player(playerName);
+                System.out.println("Enter initiative: ");
+                initiative = scanner.nextLine();
+                addCharacter(character, 1, Integer.parseInt(initiative));
+            }
+            else {
+                return;
+            }
+        }while(!Objects.equals(playerName, ""));
+    }
+
+    void addAlley() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String allyName;
+        int enemyAmount;
+        Character ally;
+        do {
+            System.out.println("Enter ally name(hit return if done): ");
+            allyName = scanner.nextLine();
+            if(!Objects.equals(allyName, "")) {
+                allyName = allyName.replaceAll(" ", "_");
+                System.out.println("Enter amount(Enter 0 to cancel): ");
+                enemyAmount = Integer.parseInt(scanner.nextLine());
+                if(enemyAmount < 0) {
+                    System.out.println("Enter a number that isn't negative");
+                }
+            }
+            else {
+                return;
+            }
+            ally = mapper.readValue(new File("./allies/" + allyName + ".json"), Enemy.class);
+            addCharacter(ally, enemyAmount, ally.rollInitiative());
+        }while(!Objects.equals(allyName, ""));
+    }
+
+    void addEnemy() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String enemyName;
+        int enemyAmount;
+        Character enemy;
+        do {
+            System.out.println("Enter enemy name(hit return if done): ");
+            enemyName = scanner.nextLine();
+            if(!Objects.equals(enemyName, "")) {
+                enemyName = enemyName.replaceAll(" ", "_");
+                System.out.println("Enter amount(Enter 0 to cancel): ");
+                enemyAmount = Integer.parseInt(scanner.nextLine());
+                if(enemyAmount < 0) {
+                    System.out.println("Enter a number that isn't negative");
+                }
+            }
+            else {
+                return;
+            }
+            enemy = mapper.readValue(new File("./enemies/" + enemyName + ".json"), Enemy.class);
+            addCharacter(enemy, enemyAmount, enemy.rollInitiative());
+        }while(!Objects.equals(enemyName, ""));
     }
 
     void battle() throws IOException {
@@ -90,27 +159,22 @@ public class InitiativeTracker {
     }
 
     void addMoreCharacters() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
         Scanner scanner = new Scanner(System.in);
-        String enemyName;
-        int enemyAmount;
-        do {
-            System.out.println("Enter enemy name(hit return if done): ");
-            enemyName = scanner.nextLine();
-            if(!Objects.equals(enemyName, "")) {
-                enemyName = enemyName.replaceAll(" ", "_");
-                System.out.println("Enter enemy amount(Enter 0 to cancel): ");
-                enemyAmount = Integer.parseInt(scanner.nextLine());
-                if(enemyAmount < 0) {
-                    System.out.println("Enter a number that isn't negative");
-                }
-            }
-            else {
-                return;
-            }
-            Character enemy = mapper.readValue(new File("./enemies/" + enemyName + ".json"), Enemy.class);
-            addCharacter(enemy, enemyAmount);
-        }while(!Objects.equals(enemyName, ""));
+        System.out.println("Are you adding: ");
+        System.out.println("1.) Enemy ");
+        System.out.println("2.) Ally ");
+        System.out.println("3.) Player ");
+        String option = scanner.nextLine();
+
+        if(option.equalsIgnoreCase("enemy") || option.equals("1")) {
+            addEnemy();
+        }
+        else if (option.equalsIgnoreCase("ally") || option.equals("2")) {
+            addAlley();
+        }
+        else if (option.equalsIgnoreCase("player") || option.equals("3")) {
+            addPlayer();
+        }
     }
 
     @Override

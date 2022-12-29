@@ -203,7 +203,11 @@ public abstract class Character {
 
     void calHitPoints() {
         double hpSize = 0;
-        if(size.compareToIgnoreCase("tiny") == 0) {
+        if(size == null) {
+            health = 0;
+            return;
+        }
+        else if(size.compareToIgnoreCase("tiny") == 0) {
             hpSize = 2.5;
         } else if (size.compareToIgnoreCase("small") == 0) {
             hpSize = 3.5;

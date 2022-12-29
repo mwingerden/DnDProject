@@ -28,7 +28,14 @@ public class CharacterTurn {
 
     @Override
     public String toString() {
-        return "Initiative: " + this.initiative + ", Name: " + this.character.getName() + ", HP: " + this.hp + "\n";
+        StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.character.getName());
+        if(hp > 0) {
+            result.append(", HP: ").append(this.hp).append("\n");
+        }
+        else {
+            result.append("\n");
+        }
+        return result.toString();
     }
 
 
