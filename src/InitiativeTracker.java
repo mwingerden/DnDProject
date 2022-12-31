@@ -13,9 +13,9 @@ public class InitiativeTracker {
         this.mapper = new ObjectMapper();
     }
 
-    void addCharacter(Character character, int amount, int initiative) {
+    void addCharacter(NPC NPC, int amount, int initiative) {
         for(int i = 1; i <= amount; i++) {
-            tracker.add(new CharacterTurn(character, initiative));
+            tracker.add(new CharacterTurn(NPC, initiative));
         }
         tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
     }
@@ -32,10 +32,10 @@ public class InitiativeTracker {
             System.out.println("Enter player name(hit return if done): ");
             playerName = scanner.nextLine();
             if(!Objects.equals(playerName, "")) {
-                Character character = new Player(playerName);
+                NPC NPC = new Player(playerName);
                 System.out.println("Enter initiative: ");
                 initiative = scanner.nextLine();
-                addCharacter(character, 1, Integer.parseInt(initiative));
+                addCharacter(NPC, 1, Integer.parseInt(initiative));
             }
             else {
                 return;
@@ -47,7 +47,7 @@ public class InitiativeTracker {
         Scanner scanner = new Scanner(System.in);
         String allyName;
         int enemyAmount;
-        Character ally;
+        NPC ally;
         do {
             System.out.println("Enter ally name(hit return if done): ");
             allyName = scanner.nextLine();
@@ -71,7 +71,7 @@ public class InitiativeTracker {
         Scanner scanner = new Scanner(System.in);
         String enemyName;
         int enemyAmount;
-        Character enemy;
+        NPC enemy;
         do {
             System.out.println("Enter enemy name(hit return if done): ");
             enemyName = scanner.nextLine();
@@ -97,7 +97,7 @@ public class InitiativeTracker {
         String option;
         int roundCounter = 1;
         int characterCounter;
-        Character character;
+        NPC NPC;
         do {
             characterCounter = 1;
             while(true) {
@@ -111,8 +111,8 @@ public class InitiativeTracker {
                 if(turnTracker >= tracker.size()) {
                     turnTracker = 0;
                 }
-                character = tracker.get(turnTracker).getCharacter();
-                System.out.println("\n" + character);
+                NPC = tracker.get(turnTracker).getCharacter();
+                System.out.println("\n" + NPC);
                 System.out.println("\nEnter Option(Enter nothing for next turn): ");
                 System.out.println("1.) health");
                 System.out.println("2.) add");
@@ -129,7 +129,7 @@ public class InitiativeTracker {
                     break;
                 }
                 for(CharacterTurn ct : tracker) {
-                    if(ct.getCharacter().hashCode() == character.hashCode()) {
+                    if(ct.getCharacter().hashCode() == NPC.hashCode()) {
                         turnTracker = tracker.indexOf(ct);
                     }
                 }

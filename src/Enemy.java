@@ -1,7 +1,7 @@
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Enemy extends Character {
+public class Enemy extends NPC {
     @JsonCreator
     public Enemy(@JsonProperty("name") String name,
                  @JsonProperty("size") String size,

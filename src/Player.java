@@ -1,4 +1,4 @@
-public class Player extends Character {
+public class Player extends NPC {
     public Player(String name) {
         super(name,
                  null,

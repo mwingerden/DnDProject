@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Character {
+public abstract class NPC {
     private final String name;
     private final String size;
     private final String type;
@@ -73,19 +73,19 @@ public abstract class Character {
 
     private final ChallengeCharacterBonus cb;
 
-    public Character(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
-                     int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
-                     int climbSpeed, int flySpeed, boolean hover, int swimSpeed, boolean customHP, boolean customSpeed,
-                     String hpText, String speedDesc, int strPoints, int dexPoints, int conPoints, int intPoints,
-                     int wisPoints, int chaPoints, int blindsight, boolean blind, int darkvision, int tremorsense,
-                     int truesight, int telepathy, String cr, String customCr, int customProf, boolean isLegendary,
-                     String legendariesDescription, boolean isLair, String lairDescription, String lairDescriptionEnd,
-                     boolean isMythic, String mythicDescription, boolean isRegional, String regionalDescription,
-                     String regionalDescriptionEnd, String[] properties, Abilities[] abilities, Actions[] actions,
-                     String[] bonusActions, String[] reactions, LegendaryAction[] legendaries, String[] mythics,
-                     String[] lairs, String[] regionals, SThrows[] sthrows, Skills[] skills, DamageTypes[] damagetypes,
-                     String[] specialdamage, String[] conditions, Languages[] languages, String understandsBut,
-                     String shortName, String pluralName, boolean doubleColumns, int separationPoint, String[] damage) {
+    public NPC(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
+               int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
+               int climbSpeed, int flySpeed, boolean hover, int swimSpeed, boolean customHP, boolean customSpeed,
+               String hpText, String speedDesc, int strPoints, int dexPoints, int conPoints, int intPoints,
+               int wisPoints, int chaPoints, int blindsight, boolean blind, int darkvision, int tremorsense,
+               int truesight, int telepathy, String cr, String customCr, int customProf, boolean isLegendary,
+               String legendariesDescription, boolean isLair, String lairDescription, String lairDescriptionEnd,
+               boolean isMythic, String mythicDescription, boolean isRegional, String regionalDescription,
+               String regionalDescriptionEnd, String[] properties, Abilities[] abilities, Actions[] actions,
+               String[] bonusActions, String[] reactions, LegendaryAction[] legendaries, String[] mythics,
+               String[] lairs, String[] regionals, SThrows[] sthrows, Skills[] skills, DamageTypes[] damagetypes,
+               String[] specialdamage, String[] conditions, Languages[] languages, String understandsBut,
+               String shortName, String pluralName, boolean doubleColumns, int separationPoint, String[] damage) {
         this.name = name;
         this.size = size;
         this.type = type;
@@ -349,13 +349,68 @@ public abstract class Character {
         str.append(size).append(" ").append(type).append("(").append(tag).append(")").append(", ").append(alignment).append("\n");
         str.append("Armor Class ").append(otherArmorDesc).append("\n");
         str.append("Hit Points ").append(health).append("\n");
-        str.append("Speed ").append(speed).append("ft.\n");
+        str.append("Speed ").append(speedDesc);
         str.append("STR:").append(strPoints).append("(+").append(statBonus("str")).append(")").append(" DEX:")
                 .append(dexPoints).append("(+").append(statBonus("dex")).append(")").append(" CON:")
                 .append(conPoints).append("(+").append(statBonus("con")).append(")").append(" INT:")
                 .append(intPoints).append("(+").append(statBonus("int")).append(")").append(" WIS:")
                 .append(wisPoints).append("(+").append(statBonus("wis")).append(")").append(" CHA:")
                 .append(chaPoints).append("(+").append(statBonus("cha")).append(")\n");
+        str.append("_Saving Throws_: ");
+        for(SThrows sThrow : sthrows) {
+            str.append(sThrow.getName()).append(" ").append("+").append(statBonus(sThrow.getName()) + cb.crBonus(cr)).append(", ");
+        }
+
+        str.append("\n_Skills_: ");
+        for(Skills skill : skills) {
+            str.append(skill.getName()).append(" ");
+            if(skill.getNote() == null) {
+                str.append("+").append(statBonus(skill.getStat()) + cb.crBonus(cr)).append(", ");
+            }
+            else {
+                str.append("+").append(statBonus(skill.getStat()) + cb.crBonus(cr) * 2).append(", ");
+            }
+        }
+
+        str.append("\n_Damage Types_: ");
+        for(DamageTypes damageTypes: damagetypes) {
+            str.append(damageTypes.getName()).append(damageTypes.getNote()).append(" ");
+        }
+
+        str.append("_Sense_: " + "blindsight").append(blindsight).append(" ft.,").append("darkvision").append(darkvision).append(" ft., ");
+        boolean check = false;
+        for(Skills skill : skills) {
+            if(skill.getName().equalsIgnoreCase("perception")) {
+                str.append("passive Perception ").append(10 + (statBonus("wis") + cb.crBonus(cr) * 2));
+                check = true;
+            }
+        }
+
+        if(!check) {
+            str.append("passive Perception ").append(10 + statBonus("wis"));
+        }
+
+        str.append("\n_Languages_: ");
+        for(Languages languages : languages) {
+            str.append(languages.getName()).append(", ");
+        }
+
+        str.append("\n_Challenge_: ").append(customCr).append("\n");
+
+        str.append("\n_Abilities_: \n");
+        for(Abilities abilities : abilities) {
+            str.append("_").append(abilities.getName()).append("_. ").append(abilities.getDesc()).append("\n");
+        }
+
+        str.append("\n_Actions_: \n");
+        for(Actions actions: actions) {
+            str.append("_").append(actions.getName()).append("_. ").append(actions.getDesc()).append("\n");
+        }
+
+        str.append("\n_Legendary Actions_: \n");
+        for(LegendaryAction legendaryAction: legendaries) {
+            str.append("_").append(legendaryAction.getName()).append("_. ").append(legendaryAction.getDesc()).append("\n");
+        }
 
         return str.toString();
     }

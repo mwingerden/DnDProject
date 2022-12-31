@@ -9,8 +9,8 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CharacterTest {
-    Character npc;
+class NPCTest {
+    NPC npc;
 
     @BeforeEach
     public void setUp() throws IOException {

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Fixed a few bugs in the initiative tracker.">
-      <change afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added Player.java. Added the ability to add ally and player to the initiative tracker.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ally.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ally.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CharacterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPCTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CharacterTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CharacterTurn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DnDInitiativeTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InitiativeTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,45 +84,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterTest.savingThrowStrength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" value="savingThrowStrength" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterTest.skillCheckAcrobatics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" value="skillCheckAcrobatics" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CharacterTest.strengthBonus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DnDProject" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" value="strengthBonus" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DnDProject" />
       <option name="PACKAGE_NAME" value="" />
@@ -129,21 +93,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NPCTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="NPCTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NPCTest.savingThrowStrength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="NPCTest" />
+      <option name="METHOD_NAME" value="savingThrowStrength" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NPCTest.skillCheckAcrobatics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="NPCTest" />
+      <option name="METHOD_NAME" value="skillCheckAcrobatics" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NPCTest.strengthBonus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DnDProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="NPCTest" />
+      <option name="METHOD_NAME" value="strengthBonus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.DnDInitiativeTracker" />
-      <item itemvalue="JUnit.CharacterTest.strengthBonus" />
+      <item itemvalue="JUnit.NPCTest" />
+      <item itemvalue="JUnit.NPCTest.savingThrowStrength" />
+      <item itemvalue="JUnit.NPCTest.skillCheckAcrobatics" />
+      <item itemvalue="JUnit.NPCTest.strengthBonus" />
       <item itemvalue="JUnit.DiceTest" />
-      <item itemvalue="JUnit.CharacterTest" />
-      <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
-      <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CharacterTest" />
         <item itemvalue="JUnit.DiceTest" />
-        <item itemvalue="JUnit.CharacterTest.strengthBonus" />
-        <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
-        <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
+        <item itemvalue="JUnit.NPCTest" />
+        <item itemvalue="JUnit.NPCTest.strengthBonus" />
+        <item itemvalue="JUnit.NPCTest.savingThrowStrength" />
+        <item itemvalue="JUnit.NPCTest.skillCheckAcrobatics" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672276910058</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added Player.java. Added the ability to add ally and player to the initiative tracker.">
+      <created>1672279906296</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672279906296</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,6 +300,7 @@
     <MESSAGE value="Fixed class hierarchy issues." />
     <MESSAGE value="Added ChallengeCharacterBonus.java" />
     <MESSAGE value="Fixed a few bugs in the initiative tracker." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a few bugs in the initiative tracker." />
+    <MESSAGE value="Added Player.java. Added the ability to add ally and player to the initiative tracker." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Player.java. Added the ability to add ally and player to the initiative tracker." />
   </component>
 </project>
