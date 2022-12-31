@@ -227,7 +227,7 @@ public abstract class Character {
         int roll = 0;
         int order;
         roll += dice.dTwenty();
-        System.out.println("Saving Throw Roll: " + roll);
+//        System.out.println("Saving Throw Roll: " + roll);
 
         if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
             roll += statBonus(check);
@@ -269,7 +269,7 @@ public abstract class Character {
     int skillCheck(String check) {
         int roll = 0;
         roll += dice.dTwenty();
-        System.out.println("Skill Check Roll: " + roll);
+//        System.out.println("Skill Check Roll: " + roll);
 
         for(Skills skill : skills) {
             if(skill.getName().equalsIgnoreCase(check)) {

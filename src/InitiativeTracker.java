@@ -97,7 +97,7 @@ public class InitiativeTracker {
         String option;
         int roundCounter = 1;
         int characterCounter;
-        Character Character;
+        Character character;
         do {
             characterCounter = 1;
             while(true) {
@@ -111,13 +111,15 @@ public class InitiativeTracker {
                 if(turnTracker >= tracker.size()) {
                     turnTracker = 0;
                 }
-                Character = tracker.get(turnTracker).getCharacter();
-                System.out.println("\n" + Character);
+                character = tracker.get(turnTracker).getCharacter();
+                System.out.println("\n" + character);
                 System.out.println("\nEnter Option(Enter nothing for next turn): ");
                 System.out.println("1.) health");
                 System.out.println("2.) add");
-                System.out.println("3.) action");
-                System.out.println("4.) end");
+                System.out.println("3.) action");;
+                System.out.println("4.) saving throw");;
+                System.out.println("5.) skill check");
+                System.out.println("6.) end");
                 option = scanner.nextLine();
                 if(option.equalsIgnoreCase("health") || option.equals(("1"))) {
                     healthOption();
@@ -129,18 +131,24 @@ public class InitiativeTracker {
                 else if(option.equalsIgnoreCase("action") || option.equals("3")) {
                     attack();
                 }
+                else if(option.equalsIgnoreCase("saving throw") || option.equals("4")) {
+                    rollSavingThrow();
+                }
+                else if(option.equalsIgnoreCase("skill check") || option.equals("5")) {
+                    rollSkillCheck();
+                }
                 else {
                     break;
                 }
                 for(CharacterTurn ct : tracker) {
-                    if(ct.getCharacter().hashCode() == Character.hashCode()) {
+                    if(ct.getCharacter().hashCode() == character.hashCode()) {
                         turnTracker = tracker.indexOf(ct);
                     }
                 }
             }
             roundCounter++;
             turnTracker++;
-        }while(!(option.equalsIgnoreCase("end") || option.equals("4")));
+        }while(!(option.equalsIgnoreCase("end") || option.equals("6")));
     }
 
     void checkTracker() {
@@ -242,8 +250,148 @@ public class InitiativeTracker {
             System.out.println("Enter nothing if character is done attacking.");
             option = scanner.nextLine();
         }while(!option.isEmpty());
-
     }
+
+    void rollSavingThrow() {
+        String option;
+        Scanner scanner = new Scanner(System.in);
+        Character character;
+        int roll = 0;
+        do {
+            System.out.println("Enter number with corresponding character: ");
+            option = scanner.nextLine();
+            //TODO: Add check for 0 input
+            //TODO: Add option for advantage/disadvantage
+            character = tracker.get(Integer.parseInt(option) - 1).getCharacter();
+            System.out.println("Enter Ability for Saving Throw");
+            System.out.println("1.) Strength");
+            System.out.println("2.) Dexterity");
+            System.out.println("3.) Constitution");
+            System.out.println("4.) Intelligence");
+            System.out.println("5.) Wisdom");
+            System.out.println("6.) Charisma");
+            option = scanner.nextLine();
+
+            if(option.equalsIgnoreCase("strength") || option.equals("1")) {
+                roll = character.savingThrow("str");
+            }
+            else if(option.equalsIgnoreCase("dexterity") || option.equals("2")) {
+                roll = character.savingThrow("dex");
+            }
+            else if(option.equalsIgnoreCase("constitution") || option.equals("3")) {
+                roll = character.savingThrow("con");
+            }
+            else if(option.equalsIgnoreCase("intelligence") || option.equals("4")) {
+                roll = character.savingThrow("int");
+            }
+            else if(option.equalsIgnoreCase("wisdom") || option.equals("5")) {
+                roll = character.savingThrow("wis");
+            }
+            else if(option.equalsIgnoreCase("charisma") || option.equals("6")) {
+                roll = character.savingThrow("cha");
+            }
+
+            System.out.println("The Saving Throw Roll: " + roll);
+
+            System.out.println("Enter nothing if done.");
+            option = scanner.nextLine();
+        }while(!option.isEmpty());
+    }
+
+    void rollSkillCheck() {
+        String option;
+        Scanner scanner = new Scanner(System.in);
+        Character character;
+        int roll = 0;
+        do {
+            System.out.println("Enter number with corresponding character: ");
+            option = scanner.nextLine();
+            //TODO: Add check for 0 input
+            //TODO: Add option for advantage/disadvantage
+            character = tracker.get(Integer.parseInt(option) - 1).getCharacter();
+            System.out.println("Enter Skill Check: ");
+            System.out.println("1.) Acrobatics");
+            System.out.println("2.) Animal Handling");
+            System.out.println("3.) Arcana");
+            System.out.println("4.) Athletics");
+            System.out.println("5.) Deception");
+            System.out.println("6.) History");
+            System.out.println("7.) Insight");
+            System.out.println("8.) Intimidation");
+            System.out.println("9.) Investigation");
+            System.out.println("10.) Medicine");
+            System.out.println("11.) Nature");
+            System.out.println("12.) Perception");
+            System.out.println("13.) Performance");
+            System.out.println("14.) Persuasion");
+            System.out.println("15.) Religion");
+            System.out.println("16.) Sleight of Hand");
+            System.out.println("17.) Stealth");
+            System.out.println("18.) Survival");
+            option = scanner.nextLine();
+
+            if(option.equalsIgnoreCase("acrobatics") || option.equals("1")) {
+                roll = character.skillCheck("acrobatics");
+            }
+            else if(option.equalsIgnoreCase("animal handling") || option.equals("2")) {
+                roll = character.skillCheck("animal handling");
+            }
+            else if(option.equalsIgnoreCase("arcana") || option.equals("3")) {
+                roll = character.skillCheck("arcana");
+            }
+            else if(option.equalsIgnoreCase("athletics") || option.equals("4")) {
+                roll = character.skillCheck("athletics");
+            }
+            else if(option.equalsIgnoreCase("deception") || option.equals("5")) {
+                roll = character.skillCheck("deception");
+            }
+            else if(option.equalsIgnoreCase("history") || option.equals("6")) {
+                roll = character.skillCheck("history");
+            }
+            else if(option.equalsIgnoreCase("insight") || option.equals("7")) {
+                roll = character.skillCheck("insight");
+            }
+            else if(option.equalsIgnoreCase("intimidation") || option.equals("8")) {
+                roll = character.skillCheck("intimidation");
+            }
+            else if(option.equalsIgnoreCase("investigation") || option.equals("9")) {
+                roll = character.skillCheck("investigation");
+            }
+            else if(option.equalsIgnoreCase("medicine") || option.equals("10")) {
+                roll = character.skillCheck("medicine");
+            }
+            else if(option.equalsIgnoreCase("nature") || option.equals("11")) {
+                roll = character.skillCheck("nature");
+            }
+            else if(option.equalsIgnoreCase("perception") || option.equals("12")) {
+                roll = character.skillCheck("perception");
+            }
+            else if(option.equalsIgnoreCase("performance") || option.equals("13")) {
+                roll = character.skillCheck("performance");
+            }
+            else if(option.equalsIgnoreCase("persuasion") || option.equals("14")) {
+                roll = character.skillCheck("persuasion");
+            }
+            else if(option.equalsIgnoreCase("religion") || option.equals("15")) {
+                roll = character.skillCheck("religion");
+            }
+            else if(option.equalsIgnoreCase("sleight of hand") || option.equals("16")) {
+                roll = character.skillCheck("sleight of hand");
+            }
+            else if(option.equalsIgnoreCase("stealth") || option.equals("17")) {
+                roll = character.skillCheck("stealth");
+            }
+            else if(option.equalsIgnoreCase("survival") || option.equals("18")) {
+                roll = character.skillCheck("survival");
+            }
+
+            System.out.println("The Skill Check Roll: " + roll);
+
+            System.out.println("Enter nothing if done.");
+            option = scanner.nextLine();
+        }while(!option.isEmpty());
+    }
+
 
     @Override
     public String toString() {
