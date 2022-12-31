@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class NPC {
+public abstract class Character {
     private final String name;
     private final String size;
     private final String type;
@@ -73,19 +73,19 @@ public abstract class NPC {
 
     private final ChallengeCharacterBonus cb;
 
-    public NPC(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
-               int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
-               int climbSpeed, int flySpeed, boolean hover, int swimSpeed, boolean customHP, boolean customSpeed,
-               String hpText, String speedDesc, int strPoints, int dexPoints, int conPoints, int intPoints,
-               int wisPoints, int chaPoints, int blindsight, boolean blind, int darkvision, int tremorsense,
-               int truesight, int telepathy, String cr, String customCr, int customProf, boolean isLegendary,
-               String legendariesDescription, boolean isLair, String lairDescription, String lairDescriptionEnd,
-               boolean isMythic, String mythicDescription, boolean isRegional, String regionalDescription,
-               String regionalDescriptionEnd, String[] properties, Abilities[] abilities, Actions[] actions,
-               String[] bonusActions, String[] reactions, LegendaryAction[] legendaries, String[] mythics,
-               String[] lairs, String[] regionals, SThrows[] sthrows, Skills[] skills, DamageTypes[] damagetypes,
-               String[] specialdamage, String[] conditions, Languages[] languages, String understandsBut,
-               String shortName, String pluralName, boolean doubleColumns, int separationPoint, String[] damage) {
+    public Character(String name, String size, String type, String tag, String alignment, int hitDice, String armorName,
+                     int shieldBonus, int natArmorBonus, String otherArmorDesc, int speed, int burrowSpeed,
+                     int climbSpeed, int flySpeed, boolean hover, int swimSpeed, boolean customHP, boolean customSpeed,
+                     String hpText, String speedDesc, int strPoints, int dexPoints, int conPoints, int intPoints,
+                     int wisPoints, int chaPoints, int blindsight, boolean blind, int darkvision, int tremorsense,
+                     int truesight, int telepathy, String cr, String customCr, int customProf, boolean isLegendary,
+                     String legendariesDescription, boolean isLair, String lairDescription, String lairDescriptionEnd,
+                     boolean isMythic, String mythicDescription, boolean isRegional, String regionalDescription,
+                     String regionalDescriptionEnd, String[] properties, Abilities[] abilities, Actions[] actions,
+                     String[] bonusActions, String[] reactions, LegendaryAction[] legendaries, String[] mythics,
+                     String[] lairs, String[] regionals, SThrows[] sthrows, Skills[] skills, DamageTypes[] damagetypes,
+                     String[] specialdamage, String[] conditions, Languages[] languages, String understandsBut,
+                     String shortName, String pluralName, boolean doubleColumns, int separationPoint, String[] damage) {
         this.name = name;
         this.size = size;
         this.type = type;

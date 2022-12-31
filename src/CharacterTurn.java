@@ -1,20 +1,20 @@
 public class CharacterTurn {
-    private final NPC NPC;
+    private final Character Character;
     private final int initiative;
     private int hp;
 
-    public CharacterTurn(NPC NPC, int initiative) {
-        this.NPC = NPC;
+    public CharacterTurn(Character Character, int initiative) {
+        this.Character = Character;
         this.initiative = initiative;
-        this.hp = NPC.getHealth();
+        this.hp = Character.getHealth();
     }
 
     public int getInitiative() {
         return initiative;
     }
 
-    public NPC getCharacter() {
-        return NPC;
+    public Character getCharacter() {
+        return Character;
     }
 
     public int getHp() {
@@ -23,12 +23,12 @@ public class CharacterTurn {
 
     public void setHp(int hp) {
         this.hp = hp;
-        NPC.setHealth(hp);
+        Character.setHealth(hp);
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.NPC.getName());
+        StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.Character.getName());
         if(hp > 0) {
             result.append(", HP: ").append(this.hp).append("\n");
         }

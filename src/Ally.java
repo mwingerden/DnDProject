@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Ally extends NPC {
+public class Ally extends Character {
     int charLevel;
     String charBackground;
 

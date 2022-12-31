@@ -1,7 +1,4 @@
 public class Dice {
-    public Dice() {
-    }
-
     private int getRandomNumber(int max) {
         return (int) ((Math.random() * (max - 1)) + 1);
     }
