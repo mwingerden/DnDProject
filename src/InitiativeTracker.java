@@ -13,9 +13,9 @@ public class InitiativeTracker {
         this.mapper = new ObjectMapper();
     }
 
-    void addCharacter(Character Character, int amount, int initiative) {
+    private void addCharacter(Character Character, int amount) {
         for(int i = 1; i <= amount; i++) {
-            tracker.add(new CharacterTurn(Character, initiative));
+            tracker.add(new CharacterTurn(Character, Character.rollInitiative()));
         }
         tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
     }
@@ -35,7 +35,7 @@ public class InitiativeTracker {
                 Character Character = new Player(playerName);
                 System.out.println("Enter initiative: ");
                 initiative = scanner.nextLine();
-                addCharacter(Character, 1, Integer.parseInt(initiative));
+                tracker.add(new CharacterTurn(Character, Integer.parseInt(initiative)));
             }
             else {
                 return;
@@ -63,7 +63,7 @@ public class InitiativeTracker {
                 return;
             }
             ally = mapper.readValue(new File("./allies/" + allyName + ".json"), Enemy.class);
-            addCharacter(ally, enemyAmount, ally.rollInitiative());
+            addCharacter(ally, enemyAmount);
         }while(!Objects.equals(allyName, ""));
     }
 
@@ -87,7 +87,7 @@ public class InitiativeTracker {
                 return;
             }
             enemy = mapper.readValue(new File("./enemies/" + enemyName + ".json"), Enemy.class);
-            addCharacter(enemy, enemyAmount, enemy.rollInitiative());
+            addCharacter(enemy, enemyAmount);
         }while(!Objects.equals(enemyName, ""));
     }
 
@@ -99,8 +99,8 @@ public class InitiativeTracker {
         int characterCounter;
         Character character;
         do {
-            characterCounter = 1;
             while(true) {
+                characterCounter = 1;
                 if(tracker.isEmpty()) {
                     return;
                 }
@@ -116,10 +116,11 @@ public class InitiativeTracker {
                 System.out.println("\nEnter Option(Enter nothing for next turn): ");
                 System.out.println("1.) health");
                 System.out.println("2.) add");
-                System.out.println("3.) action");;
-                System.out.println("4.) saving throw");;
+                System.out.println("3.) action");
+                System.out.println("4.) saving throw");
                 System.out.println("5.) skill check");
-                System.out.println("6.) end");
+                System.out.println("6.) condition");
+                System.out.println("7.) end");
                 option = scanner.nextLine();
                 if(option.equalsIgnoreCase("health") || option.equals(("1"))) {
                     healthOption();
@@ -137,6 +138,9 @@ public class InitiativeTracker {
                 else if(option.equalsIgnoreCase("skill check") || option.equals("5")) {
                     rollSkillCheck();
                 }
+                else if(option.equalsIgnoreCase("condition") || option.equals("6")) {
+                    addCondition();
+                }
                 else {
                     break;
                 }
@@ -148,11 +152,40 @@ public class InitiativeTracker {
             }
             roundCounter++;
             turnTracker++;
-        }while(!(option.equalsIgnoreCase("end") || option.equals("6")));
+        }while(!(option.equalsIgnoreCase("end") || option.equals("7")));
     }
 
     void checkTracker() {
         tracker.removeIf(ct -> ct.getHp() <= 0);
+    }
+
+    void addCondition() {
+        Scanner scanner = new Scanner(System.in);
+        String option;
+        int placement;
+        do {
+            System.out.println("Select character to modify condition(Enter nothing if done): ");
+            option = scanner.nextLine();
+            if(option.isEmpty()) {
+                return;
+            }
+            placement = Integer.parseInt(option) - 1;
+            if(placement < 0 || placement > tracker.size()) {
+                System.out.println("Enter number in the range of characters.");
+                continue;
+            }
+            if(!tracker.get(placement).getCondition().isEmpty()) {
+                System.out.println("This character already has a condition. Enter yes if you want to remove condition, nothing if no: ");
+                option = scanner.nextLine();
+                if (!option.isEmpty()) {
+                    tracker.get(placement).setCondition("");
+                }
+                continue;
+            }
+            System.out.println("Enter condition: ");
+            option = scanner.nextLine();
+            tracker.get(placement).setCondition(option);
+        }while(true);
     }
 
     void healthOption() {

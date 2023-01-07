@@ -1,12 +1,15 @@
 public class CharacterTurn {
-    private final Character Character;
+    private final Character character;
     private final int initiative;
     private int hp;
 
+    private String condition;
+
     public CharacterTurn(Character Character, int initiative) {
-        this.Character = Character;
+        this.character = Character;
         this.initiative = initiative;
         this.hp = Character.getHealth();
+        this.condition = "";
     }
 
     public int getInitiative() {
@@ -14,7 +17,7 @@ public class CharacterTurn {
     }
 
     public Character getCharacter() {
-        return Character;
+        return character;
     }
 
     public int getHp() {
@@ -23,14 +26,25 @@ public class CharacterTurn {
 
     public void setHp(int hp) {
         this.hp = hp;
-        Character.setHealth(hp);
+        character.setHealth(hp);
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.Character.getName());
+        StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.character.getName());
         if(hp > 0) {
-            result.append(", HP: ").append(this.hp).append("\n");
+            result.append(", HP: ").append(this.hp);
+        }
+        if(!condition.isEmpty()) {
+            result.append(", Condition: ").append(condition).append("\n");
         }
         else {
             result.append("\n");

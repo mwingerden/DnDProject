@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added a rudimentary attack option to InitiativeTracker.java.">
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added ability to add conditions to all those in the initiative order.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CharacterTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CharacterTurn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InitiativeTracker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +280,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672526628375</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added skill check and saving throw option to InitiativeTracker.java.">
+      <created>1672528751485</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672528751485</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Updated README.txt">
+      <created>1672884319149</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1672884319150</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,19 +326,27 @@
     <MESSAGE value="Added Player.java. Added the ability to add ally and player to the initiative tracker." />
     <MESSAGE value="Created a toString for NPC that goes into further detail about the instance of NPC." />
     <MESSAGE value="Added a rudimentary attack option to InitiativeTracker.java." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a rudimentary attack option to InitiativeTracker.java." />
+    <MESSAGE value="Added skill check and saving throw option to InitiativeTracker.java." />
+    <MESSAGE value="Updated README.txt" />
+    <MESSAGE value="Added ability to add conditions to all those in the initiative order." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to add conditions to all those in the initiative order." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
-          <line>222</line>
+          <line>255</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
-          <line>332</line>
+          <line>168</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
+          <line>179</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
