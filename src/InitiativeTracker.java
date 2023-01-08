@@ -106,7 +106,15 @@ public class InitiativeTracker {
                 }
                 System.out.println("Turn: " + roundCounter);
                 for(CharacterTurn ct : tracker) {
-                    System.out.print(characterCounter++ + ")" + ct);
+                    if(ct.getCharacter() instanceof Enemy) {
+                        System.out.print(characterCounter++ + ")" + ANSI.ANSI_RED + ct + ANSI.ANSI_RESET);
+                    }
+                    else if(ct.getCharacter() instanceof Ally) {
+                        System.out.print(characterCounter++ + ")" + ANSI.ANSI_BLUE + ct + ANSI.ANSI_RESET);
+                    }
+                    else {
+                        System.out.print(characterCounter++ + ")" + ANSI.ANSI_YELLOW + ct + ANSI.ANSI_RESET);
+                    }
                 }
                 if(turnTracker >= tracker.size()) {
                     turnTracker = 0;

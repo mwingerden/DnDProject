@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added ability to add conditions to all those in the initiative order.">
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added ability to add and remove conditions to all those in the initiative order.">
+      <change afterPath="$PROJECT_DIR$/src/ANSI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CharacterTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CharacterTurn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InitiativeTracker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -294,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672884319150</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added ability to add and remove conditions to all those in the initiative order.">
+      <created>1673134364172</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1673134364172</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,28 +336,8 @@
     <MESSAGE value="Added skill check and saving throw option to InitiativeTracker.java." />
     <MESSAGE value="Updated README.txt" />
     <MESSAGE value="Added ability to add conditions to all those in the initiative order." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to add conditions to all those in the initiative order." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
-          <line>255</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
-          <line>168</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/InitiativeTracker.java</url>
-          <line>179</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added ability to add and remove conditions to all those in the initiative order." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to add and remove conditions to all those in the initiative order." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DnDProject$DnDInitiativeTracker.ic" NAME="DnDInitiativeTracker Coverage Results" MODIFIED="1672526054411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
