@@ -6,10 +6,12 @@ import java.util.*;
 
 public class InitiativeTracker {
     private final List<CharacterTurn> tracker;
+    private final List<CharacterTurn> deadTracker;
     private final ObjectMapper mapper;
 
     public InitiativeTracker() {
         this.tracker = new ArrayList<>();
+        this.deadTracker = new ArrayList<>();
         this.mapper = new ObjectMapper();
     }
 
@@ -128,10 +130,11 @@ public class InitiativeTracker {
                 System.out.println("4.) saving throw");
                 System.out.println("5.) skill check");
                 System.out.println("6.) condition");
-                System.out.println("7.) end");
+                System.out.println("7.) revive");
+                System.out.println("8.) end");
                 option = scanner.nextLine();
                 if(option.equalsIgnoreCase("health") || option.equals(("1"))) {
-                    healthOption();
+                    health();
                     checkTracker();
                 }
                 else if(option.equalsIgnoreCase("add") || option.equals("2")) {
@@ -149,6 +152,9 @@ public class InitiativeTracker {
                 else if(option.equalsIgnoreCase("condition") || option.equals("6")) {
                     addCondition();
                 }
+                else if(option.equalsIgnoreCase("revive") || option.equals("7")) {
+                    revive();
+                }
                 else {
                     break;
                 }
@@ -160,11 +166,16 @@ public class InitiativeTracker {
             }
             roundCounter++;
             turnTracker++;
-        }while(!(option.equalsIgnoreCase("end") || option.equals("7")));
+        }while(!(option.equalsIgnoreCase("end") || option.equals("8")));
     }
 
     void checkTracker() {
-        tracker.removeIf(ct -> ct.getHp() <= 0);
+        for(int i = 0; i < tracker.size(); i++) {
+            if(tracker.get(i).getHp() <= 0) {
+                deadTracker.add(tracker.get(i));
+                tracker.remove(tracker.get(i));
+            }
+        }
     }
 
     void addCondition() {
@@ -196,7 +207,46 @@ public class InitiativeTracker {
         }while(true);
     }
 
-    void healthOption() {
+    void revive() {
+        int initialTracker;
+        int health = 0;
+        String option;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            initialTracker = 1;
+            if(!deadTracker.isEmpty()) {
+                for(CharacterTurn characterTurn : deadTracker) {
+                    System.out.println(initialTracker + ".) " + characterTurn);
+                }
+                System.out.println("Enter corresponding number to revive(Enter nothing when done): ");
+                option = scanner.nextLine();
+                if(!option.isEmpty()) {
+                    initialTracker = Integer.parseInt(option) - 1;
+                    if(initialTracker < 0 || initialTracker > deadTracker.size()) {
+                        System.out.println("Enter appropriate number.");
+                        continue;
+                    }
+                    System.out.println("Enter corresponding HP healed: ");
+                    health = Integer.parseInt(scanner.nextLine());
+                    CharacterTurn characterTurn = deadTracker.get(initialTracker);
+                    characterTurn.setHp(health);
+                    deadTracker.remove(characterTurn);
+                    tracker.add(characterTurn);
+                }
+                else {
+                    break;
+                }
+            }
+            else {
+                System.out.println("No one has died yet.");
+                break;
+            }
+        }while(true);
+
+    }
+
+    void health() {
         Scanner scanner = new Scanner(System.in);
         String option;
         System.out.println("Enter the corresponding number of the enemy: ");
