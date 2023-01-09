@@ -40,6 +40,7 @@ public class CharacterTurn {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("Initiative: " + this.initiative + ", Name: " + this.character.getName());
+        result.append(", AC: ").append(character.getOtherArmorDesc());
         if(hp > 0) {
             result.append(", HP: ").append(this.hp);
         }

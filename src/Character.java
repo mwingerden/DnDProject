@@ -12,6 +12,7 @@ public abstract class Character {
     private final String armorName;
     private final int shieldBonus;
     private final int natArmorBonus;
+
     private final String otherArmorDesc;
     private final int speed;
     private final int burrowSpeed;
@@ -425,5 +426,9 @@ public abstract class Character {
 
     void setHealth(int health) {
         this.health = health;
+    }
+
+    public String getOtherArmorDesc() {
+        return otherArmorDesc;
     }
 }

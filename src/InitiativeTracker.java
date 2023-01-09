@@ -42,6 +42,7 @@ public class InitiativeTracker {
             else {
                 return;
             }
+            tracker.sort(Comparator.comparing(CharacterTurn::getInitiative).reversed());
         }while(!Objects.equals(playerName, ""));
     }
 
@@ -124,35 +125,41 @@ public class InitiativeTracker {
                 character = tracker.get(turnTracker).getCharacter();
                 System.out.println("\n" + character);
                 System.out.println("\nEnter Option(Enter nothing for next turn): ");
-                System.out.println("1.) health");
-                System.out.println("2.) add");
-                System.out.println("3.) action");
-                System.out.println("4.) saving throw");
-                System.out.println("5.) skill check");
-                System.out.println("6.) condition");
-                System.out.println("7.) revive");
-                System.out.println("8.) end");
+                System.out.println("1.) next");
+                System.out.println("2.) health");
+                System.out.println("3.) add");
+                System.out.println("4.) action");
+                System.out.println("5.) saving throw");
+                System.out.println("6.) skill check");
+                System.out.println("7.) condition");
+                System.out.println("8.) revive");
+                System.out.println("9.) end");
                 option = scanner.nextLine();
-                if(option.equalsIgnoreCase("health") || option.equals(("1"))) {
+                if(option.equalsIgnoreCase("next") || option.equals(("1"))) {
+                    roundCounter++;
+                    turnTracker++;
+                    continue;
+                }
+                else if(option.equalsIgnoreCase("health") || option.equals(("2"))) {
                     health();
                     checkTracker();
                 }
-                else if(option.equalsIgnoreCase("add") || option.equals("2")) {
+                else if(option.equalsIgnoreCase("add") || option.equals("3")) {
                     addMoreCharacters();
                 }
-                else if(option.equalsIgnoreCase("action") || option.equals("3")) {
+                else if(option.equalsIgnoreCase("action") || option.equals("4")) {
                     attack();
                 }
-                else if(option.equalsIgnoreCase("saving throw") || option.equals("4")) {
+                else if(option.equalsIgnoreCase("saving throw") || option.equals("5")) {
                     rollSavingThrow();
                 }
-                else if(option.equalsIgnoreCase("skill check") || option.equals("5")) {
+                else if(option.equalsIgnoreCase("skill check") || option.equals("6")) {
                     rollSkillCheck();
                 }
-                else if(option.equalsIgnoreCase("condition") || option.equals("6")) {
+                else if(option.equalsIgnoreCase("condition") || option.equals("7")) {
                     addCondition();
                 }
-                else if(option.equalsIgnoreCase("revive") || option.equals("7")) {
+                else if(option.equalsIgnoreCase("revive") || option.equals("8")) {
                     revive();
                 }
                 else {
@@ -164,9 +171,7 @@ public class InitiativeTracker {
                     }
                 }
             }
-            roundCounter++;
-            turnTracker++;
-        }while(!(option.equalsIgnoreCase("end") || option.equals("8")));
+        }while(!(option.equalsIgnoreCase("end") || option.equals("9")));
     }
 
     void checkTracker() {

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Added ANSI.java to change color of text.">
+    <list default="true" id="5f5a7550-9617-46f5-a4e6-b3d6e0af515e" name="Changes" comment="Completed Health Option During Combat">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InitiativeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InitiativeTracker.java" afterDir="false" />
     </list>
@@ -136,8 +137,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest" />
+        <item itemvalue="JUnit.DiceTest" />
         <item itemvalue="JUnit.CharacterTest.strengthBonus" />
         <item itemvalue="JUnit.CharacterTest.savingThrowStrength" />
         <item itemvalue="JUnit.CharacterTest.skillCheckAcrobatics" />
@@ -244,70 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671326928400</updated>
     </task>
-    <task id="LOCAL-00014" summary="Added ChallengeCharacterBonus.java">
-      <created>1671674120442</created>
+    <task id="LOCAL-00014" summary="Completed Health Option During Combat">
+      <created>1672182112148</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1671674120442</updated>
+      <updated>1672182112148</updated>
     </task>
-    <task id="LOCAL-00015" summary="Fixed a few bugs in the initiative tracker.">
-      <created>1672276910058</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1672276910058</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added Player.java. Added the ability to add ally and player to the initiative tracker.">
-      <created>1672279906296</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1672279906296</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Created a toString for NPC that goes into further detail about the instance of NPC.">
-      <created>1672452449961</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1672452449961</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added a rudimentary attack option to InitiativeTracker.java.">
-      <created>1672526628374</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1672526628375</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added skill check and saving throw option to InitiativeTracker.java.">
-      <created>1672528751485</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1672528751485</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Updated README.txt">
-      <created>1672884319149</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1672884319150</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Added ability to add and remove conditions to all those in the initiative order.">
-      <created>1673134364172</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1673134364172</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Added ANSI.java to change color of text.">
-      <created>1673140199277</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1673140199277</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,19 +279,8 @@
     <MESSAGE value="Added json files and a working json reader that uses Jackson." />
     <MESSAGE value="Added more classes to handle the JSON arrays." />
     <MESSAGE value="Fixed class hierarchy issues." />
-    <MESSAGE value="Added ChallengeCharacterBonus.java" />
-    <MESSAGE value="Fixed a few bugs in the initiative tracker." />
-    <MESSAGE value="Added Player.java. Added the ability to add ally and player to the initiative tracker." />
-    <MESSAGE value="Created a toString for NPC that goes into further detail about the instance of NPC." />
-    <MESSAGE value="Added a rudimentary attack option to InitiativeTracker.java." />
-    <MESSAGE value="Added skill check and saving throw option to InitiativeTracker.java." />
-    <MESSAGE value="Updated README.txt" />
-    <MESSAGE value="Added ability to add conditions to all those in the initiative order." />
-    <MESSAGE value="Added ability to add and remove conditions to all those in the initiative order." />
-    <MESSAGE value="Added ANSI.java to change color of text." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ANSI.java to change color of text." />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DnDProject$DnDInitiativeTracker.ic" NAME="DnDInitiativeTracker Coverage Results" MODIFIED="1672526054411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <MESSAGE value="Added initiative tracker and able to order enemy initiative and display turns." />
+    <MESSAGE value="Completed Health Option During Combat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Health Option During Combat" />
   </component>
 </project>
