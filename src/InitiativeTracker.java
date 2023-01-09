@@ -214,7 +214,7 @@ public class InitiativeTracker {
 
     void revive() {
         int initialTracker;
-        int health = 0;
+        int health;
         String option;
         Scanner scanner = new Scanner(System.in);
 
