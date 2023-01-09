@@ -199,7 +199,7 @@ public abstract class Character {
     }
 
     int rollInitiative() {
-        return dice.dTwenty("") + statBonus("dex");
+        return dice.dTwenty() + statBonus("dex");
     }
 
     void calHitPoints() {
@@ -225,32 +225,49 @@ public abstract class Character {
     }
 
     int savingThrow(String check, String option) {
-        int roll = 0;
+        int firstRoll;
+        int secondRoll;
         int order;
-        roll += dice.dTwenty(option);
+        firstRoll = dice.dTwenty();;
+        secondRoll = dice.dTwenty();
+
+        if(firstRoll == 20) {
+            System.out.println("Natural 20!");
+            return firstRoll;
+        }
+        else if(secondRoll == 20 && (option.equalsIgnoreCase("advantage") || option.equalsIgnoreCase("disadvantage"))) {
+            System.out.println("Natural 20!");
+            return secondRoll;
+        }
 
         if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 0;
         }
         else if(check.equalsIgnoreCase("dex") || check.equalsIgnoreCase("dexterity")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 1;
         }
         else if(check.equalsIgnoreCase("con") || check.equalsIgnoreCase("constitution")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 2;
         }
         else if(check.equalsIgnoreCase("int") || check.equalsIgnoreCase("intelligence")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 3;
         }
         else if(check.equalsIgnoreCase("wis") || check.equalsIgnoreCase("wisdom")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 4;
         }
         else if(check.equalsIgnoreCase("cha") || check.equalsIgnoreCase("charisma")) {
-            roll += statBonus(check);
+            firstRoll += statBonus(check);
+            secondRoll += statBonus(check);
             order = 5;
         }
         else {
@@ -259,86 +276,132 @@ public abstract class Character {
 
         for(SThrows sThrow : sthrows) {
             if(sThrow.getOrder() == order) {
-                roll += cb.crBonus(cr);
+                firstRoll += cb.crBonus(cr);
+                secondRoll += cb.crBonus(cr);
             }
         }
 
-        return roll;
+        if(option.equalsIgnoreCase("advantage")) {
+            return Math.max(firstRoll, secondRoll);
+        }
+        else if(option.equalsIgnoreCase("disadvantage")) {
+            return Math.min(firstRoll, secondRoll);
+        }
+        return firstRoll;
     }
 
     int skillCheck(String check, String option) {
-        int roll = 0;
-        roll += dice.dTwenty(option);
+        int firstRoll;
+        int secondRoll;
+        firstRoll = dice.dTwenty();;
+        secondRoll = dice.dTwenty();
+
+        if(firstRoll == 20) {
+            System.out.println("Natural 20!(First Roll)");
+            return firstRoll;
+        }
+        else if(secondRoll == 20 && (option.equalsIgnoreCase("advantage") || option.equalsIgnoreCase("disadvantage"))) {
+            System.out.println("Natural 20!(Second Roll)");
+            return secondRoll;
+        }
 
         for(Skills skill : skills) {
             if(skill.getName().equalsIgnoreCase(check)) {
                 if(skill.getNote() != null) {
-                    roll += cb.crBonus(cr) * 2;
+                    firstRoll += cb.crBonus(cr) * 2;
+                    secondRoll += cb.crBonus(cr) * 2;
                 }
                 else {
-                    roll += cb.crBonus(cr);
+                    firstRoll += cb.crBonus(cr);
+                    secondRoll += cb.crBonus(cr);
                 }
             }
         }
 
         if(check.equalsIgnoreCase("acrobatics")) {
-            roll += statBonus("dex");
+            firstRoll += statBonus("dex");
+            secondRoll += statBonus("dex");
         }
         else if(check.equalsIgnoreCase("animal handling")) {
-            roll += statBonus("wis");
+            firstRoll += statBonus("wis");
+            secondRoll += statBonus("wis");
         }
         else if(check.equalsIgnoreCase("arcana")) {
-            roll += statBonus("int");
+            firstRoll += statBonus("int");
+            secondRoll += statBonus("int");
         }
         else if(check.equalsIgnoreCase("athletics")) {
-            roll += statBonus("str");
+            firstRoll += statBonus("str");
+            secondRoll += statBonus("str");
         }
         else if(check.equalsIgnoreCase("deception")) {
-            roll += statBonus("cha");
+            firstRoll += statBonus("cha");
+            secondRoll += statBonus("cha");
         }
         else if(check.equalsIgnoreCase("history")) {
-            roll += statBonus("int");
+            firstRoll += statBonus("int");
+            secondRoll += statBonus("int");
         }
         else if(check.equalsIgnoreCase("insight")) {
-            roll += statBonus("wis");
+            firstRoll += statBonus("wis");
+            secondRoll += statBonus("wis");
         }
         else if(check.equalsIgnoreCase("intimidation")) {
-            roll += statBonus("cha");
+            firstRoll += statBonus("cha");
+            secondRoll += statBonus("cha");
         }
         else if(check.equalsIgnoreCase("investigation")) {
-            roll += statBonus("int");
+            firstRoll += statBonus("int");
+            secondRoll += statBonus("int");
         }
         else if(check.equalsIgnoreCase("medicine")) {
-            roll += statBonus("wis");
+            firstRoll += statBonus("wis");
+            secondRoll += statBonus("wis");
         }
         else if(check.equalsIgnoreCase("nature")) {
-            roll += statBonus("int");
+            firstRoll += statBonus("int");
+            secondRoll += statBonus("int");
         }
         else if(check.equalsIgnoreCase("perception")) {
-            roll += statBonus("wis");
+            firstRoll += statBonus("wis");
+            secondRoll += statBonus("wis");
         }
         else if(check.equalsIgnoreCase("performance")) {
-            roll += statBonus("cha");
+            firstRoll += statBonus("cha");
+            secondRoll += statBonus("cha");
         }
         else if(check.equalsIgnoreCase("persuasion")) {
-            roll += statBonus("cha");
+            firstRoll += statBonus("cha");
+            secondRoll += statBonus("cha");
         }
         else if(check.equalsIgnoreCase("religion")) {
-            roll += statBonus("int");
+            firstRoll += statBonus("int");
+            secondRoll += statBonus("int");
         }
         else if(check.equalsIgnoreCase("sleight of hand")) {
-            roll += statBonus("dex") ;
+            firstRoll += statBonus("dex") ;
+            secondRoll += statBonus("dex");
         }
         else if(check.equalsIgnoreCase("stealth")) {
-            roll += statBonus("dex");
+            firstRoll += statBonus("dex");
+            secondRoll += statBonus("dex");
         }
         else if(check.equalsIgnoreCase("survival")) {
-            roll += statBonus("wis");
+            firstRoll += statBonus("wis");
+            secondRoll += statBonus("wis");
         }
         else {
-            roll = 0;
+            firstRoll = 0;
+            secondRoll = 0;
         }
-        return roll;
+
+        if(option.equalsIgnoreCase("advantage")) {
+            return Math.max(firstRoll, secondRoll);
+        }
+        else if(option.equalsIgnoreCase("disadvantage")) {
+            return Math.min(firstRoll, secondRoll);
+        }
+        return firstRoll;
     }
 
     @Override

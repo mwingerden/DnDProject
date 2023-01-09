@@ -289,6 +289,9 @@ public class InitiativeTracker {
         Dice dice = new Dice();
         Scanner scanner = new Scanner(System.in);
         String option;
+        boolean critical = false;
+        int firstRoll;
+        int secondRoll;
         int roll;
         int amount;
         int total = 0;
@@ -298,15 +301,45 @@ public class InitiativeTracker {
             //TODO: add critical hit option
             System.out.println("advantage or disadvantage?: ");
             option = scanner.nextLine();
-            roll = dice.dTwenty(option);
-            System.out.println("Initial Roll: " + roll);
-            System.out.println("Add bonus to hit: ");
-            option = scanner.nextLine();
-            System.out.println("Final Roll: " + (roll + Integer.parseInt(option)));
-            System.out.println("Enter yes if hit, nothing if no hit: ");
-            option = scanner.nextLine();
-            if(!option.isEmpty()) {
-                System.out.println("Enter amount of dice to roll: ");
+            firstRoll = dice.dTwenty();
+            secondRoll = dice.dTwenty();
+            if(firstRoll == 20) {
+                System.out.println("Critical Hit!(First Roll)");
+                critical = true;
+            }
+            if(option.equalsIgnoreCase("advantage")) {
+                if(secondRoll == 20) {
+                    System.out.println("Critical Hit!(Second Roll)");
+                    critical = true;
+                    roll = secondRoll;
+                }
+                else {
+                    roll = Math.min(firstRoll, secondRoll);
+                }
+            }
+            else if(option.equalsIgnoreCase("disadvantage")) {
+                if(secondRoll == 20) {
+                    System.out.println("Critical Hit!(Second Roll)");
+                    critical = true;
+                    roll = secondRoll;
+                }
+                else {
+                    roll = Math.min(firstRoll, secondRoll);
+                }
+            }
+            else {
+                roll = firstRoll;
+            }
+            System.out.println("Roll: " + roll);
+            if(!critical) {
+                System.out.println("Add bonus to hit: ");
+                option = scanner.nextLine();
+                System.out.println("Final Roll: " + (roll + Integer.parseInt(option)));
+                System.out.println("Enter yes if hit, nothing if no hit: ");
+                option = scanner.nextLine();
+            }
+            if(!option.isEmpty() || critical) {
+                System.out.println("Enter the initial amount of dice to roll: ");
                 amount = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter the dice to roll: ");
                 System.out.println("1.) d20 ");
@@ -321,25 +354,49 @@ public class InitiativeTracker {
                 bonus = Integer.parseInt(scanner.nextLine());
                 for(int i = 0; i < amount; i++) {
                     if(option.equalsIgnoreCase("d20") || option.equals("1")) {
-                        roll = dice.dTwenty("");
+                        roll = dice.dTwenty();
+                        if(critical) {
+                            roll += dice.dTwenty();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d12") || option.equals("2")) {
-                        roll = dice.dTwenty("");
+                        roll = dice.dTwelve();
+                        if(critical) {
+                            roll += dice.dTwelve();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d10") || option.equals("3")) {
-                        roll = dice.dTwelve("");
+                        roll = dice.dTen();
+                        if(critical) {
+                            roll += dice.dTen();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d8") || option.equals("4")) {
-                        roll = dice.dEight("");
+                        roll = dice.dEight();
+                        if(critical) {
+                            roll += dice.dEight();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d6") || option.equals("5")) {
-                        roll = dice.dSix("");
+                        roll = dice.dSix();
+                        if(critical) {
+                            roll += dice.dSix();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d4") || option.equals("6")) {
-                        roll = dice.dFour("");
+                        roll = dice.dFour();
+                        if(critical) {
+                            roll += dice.dFour();
+                        }
                     }
                     else if(option.equalsIgnoreCase("d100") || option.equals("7")) {
-                        roll = dice.dOneHundred("");
+                        roll = dice.dOneHundred();
+                        if(critical) {
+                            roll += dice.dOneHundred();
+                        }
+                    }
+                    if(critical) {
+                        bonus *= 2;
                     }
                     total += roll + bonus;
                 }
