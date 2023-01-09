@@ -199,7 +199,7 @@ public abstract class Character {
     }
 
     int rollInitiative() {
-        return dice.dTwenty() + statBonus("dex");
+        return dice.dTwenty("") + statBonus("dex");
     }
 
     void calHitPoints() {
@@ -224,11 +224,10 @@ public abstract class Character {
         health = (int)Math.round((hitDice * hpSize) + (statBonus("con") * hitDice)) - 1;
     }
 
-    int savingThrow(String check) {
+    int savingThrow(String check, String option) {
         int roll = 0;
         int order;
-        roll += dice.dTwenty();
-//        System.out.println("Saving Throw Roll: " + roll);
+        roll += dice.dTwenty(option);
 
         if(check.equalsIgnoreCase("str") || check.equalsIgnoreCase("strength")) {
             roll += statBonus(check);
@@ -267,10 +266,9 @@ public abstract class Character {
         return roll;
     }
 
-    int skillCheck(String check) {
+    int skillCheck(String check, String option) {
         int roll = 0;
-        roll += dice.dTwenty();
-//        System.out.println("Skill Check Roll: " + roll);
+        roll += dice.dTwenty(option);
 
         for(Skills skill : skills) {
             if(skill.getName().equalsIgnoreCase(check)) {
