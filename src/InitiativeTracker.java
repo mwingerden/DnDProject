@@ -362,8 +362,6 @@ public class InitiativeTracker {
             System.out.println("Enter number with corresponding character: ");
             option = scanner.nextLine();
             if(Integer.parseInt(option) >= 0 || Integer.parseInt(option) <= tracker.size()) {
-                //TODO: Add check for 0 input
-                //TODO: Add option for advantage/disadvantage
                 character = tracker.get(Integer.parseInt(option) - 1).getCharacter();
                 System.out.println("Enter Ability for Saving Throw");
                 System.out.println("1.) Strength");
@@ -416,8 +414,6 @@ public class InitiativeTracker {
         do {
             System.out.println("Enter number with corresponding character: ");
             option = scanner.nextLine();
-            //TODO: Add check for 0 input
-            //TODO: Add option for advantage/disadvantage
             character = tracker.get(Integer.parseInt(option) - 1).getCharacter();
             System.out.println("Enter Skill Check: ");
             System.out.println("1.) Acrobatics");
